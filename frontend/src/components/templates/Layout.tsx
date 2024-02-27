@@ -5,8 +5,7 @@ import Logo from "@/components/atoms/Logo";
 import ThemeSwitcher from "@/components/molecules/ThemeSwitcher";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Navigations from "@/components/organisms/Navigations";
-import { navItems } from "@/constants/nav";
+import NavigationMenu from "@/components/organisms/NavigationMenu";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -19,6 +18,7 @@ type Prop = {
 
 const Component: FC<Prop> = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <TooltipProvider delayDuration={0}>
@@ -35,13 +35,13 @@ const Component: FC<Prop> = ({ children }) => {
             >
               <ResizablePanel
                 minSize={14}
-                maxSize={20}
+                maxSize={18}
                 collapsible={true}
                 onCollapse={() => setIsCollapsed(true)}
                 onExpand={() => setIsCollapsed(false)}
                 className={cn(isCollapsed && "min-w-[60px] transition-all duration-300 ease-in-out")}
               >
-                <Navigations isCollapsed={isCollapsed} links={navItems} />
+                <NavigationMenu isCollapsed={isCollapsed} />
               </ResizablePanel>
               <ResizableHandle withHandle />
               <ResizablePanel className="h-full bg-gray-100 dark:bg-gray-800">
