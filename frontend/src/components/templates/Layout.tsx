@@ -1,8 +1,6 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, memo, useState } from "react";
 
 import { cn } from "@/lib/utils";
-import Logo from "@/components/atoms/Logo";
-import ThemeSwitcher from "@/components/molecules/ThemeSwitcher";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NavigationMenu from "@/components/organisms/NavigationMenu";
@@ -23,12 +21,12 @@ const Component: FC<Prop> = ({ children }) => {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <TooltipProvider delayDuration={0}>
         <div className="flex flex-col min-h-screen min-w-full bg-background max-h-screen">
-          <nav className="flex justify-between items-center border-b border-border h-[60px] px-4 py-2">
+          {/* <nav className="flex justify-between items-center border-b border-border px-4 py-2">
             <Logo />
             <div className="flex gap-4 items-center">
               <ThemeSwitcher />
             </div>
-          </nav>
+          </nav> */}
           <main className="h-screen flex w-full flex-grow">
             <ResizablePanelGroup
               direction="horizontal"
@@ -55,4 +53,4 @@ const Component: FC<Prop> = ({ children }) => {
   );
 };
 
-export default Component;
+export default memo(Component);

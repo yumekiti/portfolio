@@ -25,7 +25,7 @@ const Component: FC<Props> = ({ profile, isCollapsed }) => {
         <Tooltip delayDuration={0}>
           <TooltipTrigger asChild>
             <Link
-              to="#"
+              to="/"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
                 "h-full w-full py-2",
@@ -51,7 +51,7 @@ const Component: FC<Props> = ({ profile, isCollapsed }) => {
         </Tooltip>
       ) : (
         <Link
-          to="#"
+          to="/"
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon" }),
             "h-full w-full gap-2 py-2 flex justify-start items-center px-2 whitespace-pre-wrap",
