@@ -9,6 +9,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 type Prop = {
   children: ReactNode;
@@ -20,33 +21,33 @@ const Component: FC<Prop> = ({ children }) => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <TooltipProvider delayDuration={0}>
-        <div className="flex flex-col min-h-screen min-w-full bg-background max-h-screen">
+        <div className="flex h-screen">
           {/* <nav className="flex justify-between items-center border-b border-border px-4 py-2">
             <Logo />
             <div className="flex gap-4 items-center">
               <ThemeSwitcher />
             </div>
           </nav> */}
-          <main className="h-screen flex w-full flex-grow">
-            <ResizablePanelGroup
-              direction="horizontal"
+          <ResizablePanelGroup
+            direction="horizontal"
+          >
+            <ResizablePanel
+              minSize={14}
+              maxSize={18}
+              collapsible={true}
+              onCollapse={() => setIsCollapsed(true)}
+              onExpand={() => setIsCollapsed(false)}
+              className={cn(isCollapsed && "min-w-[60px] transition-all duration-300 ease-in-out")}
             >
-              <ResizablePanel
-                minSize={14}
-                maxSize={18}
-                collapsible={true}
-                onCollapse={() => setIsCollapsed(true)}
-                onExpand={() => setIsCollapsed(false)}
-                className={cn(isCollapsed && "min-w-[60px] transition-all duration-300 ease-in-out")}
-              >
-                <NavigationMenu isCollapsed={isCollapsed} />
-              </ResizablePanel>
-              <ResizableHandle withHandle />
-              <ResizablePanel className="h-full bg-gray-100 dark:bg-gray-800">
+              <NavigationMenu isCollapsed={isCollapsed} />
+            </ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel className="bg-gray-100 dark:bg-gray-800">
+              <ScrollArea className="h-full">
                 {children}
-              </ResizablePanel>
-            </ResizablePanelGroup>
-          </main>
+              </ScrollArea>
+            </ResizablePanel>
+          </ResizablePanelGroup>
         </div>
       </TooltipProvider>
     </ThemeProvider>
