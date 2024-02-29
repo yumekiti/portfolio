@@ -1,6 +1,7 @@
 import Layout from "@/components/templates/Layout";
 import Introduction from "@/components/organisms/Introduction";
 import WritingTable from "@/components/organisms/WritingTable";
+import { ScrollArea } from "../ui/scroll-area";
 
 const writing = [
   {
@@ -38,10 +39,12 @@ const introduction = "現在はウェブ開発者として活動しています�
 const Component = () => {
   return (
     <Layout>
-      <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
-        <Introduction info={info} introduction={introduction} />
-        <WritingTable writing={writing} />
-      </div>
+      <ScrollArea className="h-full bg-gray-100 dark:bg-gray-800">
+        <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
+          <Introduction info={info} introduction={introduction} />
+          <WritingTable writing={writing} />
+        </div>
+      </ScrollArea>
     </Layout>
   );
 };

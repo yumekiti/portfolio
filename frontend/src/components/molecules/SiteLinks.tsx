@@ -30,6 +30,7 @@ const Component: FC<Props> = ({ links, isCollapsed }) => {
                   link.variant === "default" &&
                     "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                 )}
+                target={link.external ? "_blank" : undefined}
               >
                 <link.icon className="h-4 w-4" />
                 <span className="sr-only">{link.title}</span>
