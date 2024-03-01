@@ -18,15 +18,15 @@ const Component: FC<Props> = ({ isCollapsed }) => {
     >
       <Separator />
       <div className="flex items-center justify-evenly">
-        <Button variant="ghost" size="lg" onClick={() => setTheme("system")}>
+        <Button variant="ghost" size="icon" onClick={() => setTheme("system")}>
           <SunMoon className="h-[1.6rem] w-[1.6rem]" />
         </Button>
         <Separator orientation="vertical" />
-        <Button variant="ghost" size="lg" onClick={() => setTheme("light")}>
+        <Button variant="ghost" size="icon" onClick={() => setTheme("light")}>
           <Sun className="h-[1.6rem] w-[1.6rem]" />
         </Button>
         <Separator orientation="vertical" />
-        <Button variant="ghost" size="lg" onClick={() => setTheme("dark")}>
+        <Button variant="ghost" size="icon" onClick={() => setTheme("dark")}>
           <Moon className="h-[1.6rem] w-[1.6rem]" />
         </Button>
       </div>

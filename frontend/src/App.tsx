@@ -5,6 +5,7 @@ import NotFound from "@/components/pages/NotFound";
 import Writing from "@/components/pages/Writing";
 import Stack from "@/components/pages/Stack";
 import Timeline from "@/components/pages/Timeline";
+import Portfolio from "@/components/pages/Portfolio";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Route path="/writing" element={<Writing />} />
       <Route path="/stack" element={<Stack />} />
       <Route path="/timeline" element={<Timeline />} />
+      <Route path="/portfolio" element={<Portfolio />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

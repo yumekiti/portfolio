@@ -26,12 +26,18 @@ const Component = () => {
               <div className="flex flex-row-reverse md:contents">
                 <Card className="col-start-1 col-end-5 rounded-xl my-4 ml-auto shadow-md">
                   <CardHeader>
-                    <CardTitle>Lorem ipsum</CardTitle>
+                    <CardTitle className="flex flex-col">
+                      <p className="text-lg font-semibold">
+                        ECCコンピュータ専門学校
+                      </p>
+                      <span className="text-sm font-normal">
+                        (2019年4月 - 2021年3月)
+                      </span>
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Modi, quaerat?
+                      ここでは、基礎的なプログラミングを学びました。
                     </CardDescription>
                   </CardContent>
                 </Card>
