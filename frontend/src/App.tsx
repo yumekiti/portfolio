@@ -1,8 +1,10 @@
 import { Route, Routes } from "react-router-dom";
+
 import Home from "@/components/pages/Home";
 import NotFound from "@/components/pages/NotFound";
 import Writing from "@/components/pages/Writing";
 import Stack from "@/components/pages/Stack";
+import Timeline from "@/components/pages/Timeline";
 
 const App = () => {
   return (
@@ -10,6 +12,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/writing" element={<Writing />} />
       <Route path="/stack" element={<Stack />} />
+      <Route path="/timeline" element={<Timeline />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
