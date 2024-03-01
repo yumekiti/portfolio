@@ -2,6 +2,9 @@ import Layout from "@/components/templates/Layout";
 import { ScrollArea } from "../ui/scroll-area";
 import { Link } from "react-router-dom";
 import { buttonVariants } from "@/components/ui/button"
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'
+import "@/markdown.css"
 
 const writing = [
   {
@@ -34,11 +37,66 @@ const writing = [
   },
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+const exampleText = `
+# Markdownの例
+
+これはMarkdownの例です。Markdownはプレーンテキスト形式で記述された文書を簡単に装飾するための軽量マークアップ言語です。
+
+## リスト
+
+リストは次のように書けます：
+
+- アイテム1
+- アイテム2
+- アイテム3
+
+順序付きリストも書けます：
+
+1. アイテムA
+2. アイテムB
+3. アイテムC
+
+## 強調
+
+文章の一部を *斜体* または **太字** にすることができます。
+
+## リンク
+
+[Google](https://www.google.com/)のようにリンクを挿入することができます。
+
+## 画像
+
+![代替テキスト](https://example.com/image.jpg)
+
+## コード
+
+コードブロックを挿入することもできます：
+
+\`\`\`python
+def greet():
+    print("Hello, world!")
+\`\`\`
+## 引用
+
+> 引用文を挿入することができます。
+
+## テーブル
+
+| 名前   | 年齢 |
+| ------ | ---- |
+| Alice  | 25   |
+| Bob    | 30   |
+| Charlie| 35   |
+
+- [ ] 未完了のタスク
+- [x] 完了したタスク
+`
+
 const Component = () => {
   return (
     <Layout>
-      <div className="flex">
-        <ScrollArea className="hidden lg:flex h-screen lg:border-r lg:w-80 xl:w-96">
+      <div className="flex h-full w-full">
+        <ScrollArea className="hidden lg:flex h-full lg:border-r lg:w-80 xl:w-96">
           <div>
             <div className="p-4 border-b border-border">
               <p>Writing</p>
@@ -72,8 +130,12 @@ const Component = () => {
           </div>
         </ScrollArea>
         <ScrollArea className="w-full h-full bg-gray-100 dark:bg-gray-800">
-          <div className="container mx-auto py-24 space-y-8">
-            <p>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</p>
+          <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
+            <ReactMarkdown
+              className='markdown text-foreground'
+              remarkPlugins={[remarkGfm]}
+              children={exampleText}
+            />
           </div>
         </ScrollArea>
       </div>

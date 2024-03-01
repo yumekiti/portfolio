@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -16,6 +16,9 @@ type Props = {
 }
 
 const Component: FC<Props> = ({ links, isCollapsed }) => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
       {links.map((link, index) =>
@@ -25,9 +28,9 @@ const Component: FC<Props> = ({ links, isCollapsed }) => {
               <Link
                 to={link.path}
                 className={cn(
-                  buttonVariants({ variant: link.variant, size: "icon" }),
+                  buttonVariants({ variant: currentPath === link.path ? "default" : "ghost", size: "sm" }),
                   "h-9 w-9",
-                  link.variant === "default" &&
+                  currentPath === link.path &&
                     "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                 )}
                 target={link.external ? "_blank" : undefined}
@@ -50,8 +53,8 @@ const Component: FC<Props> = ({ links, isCollapsed }) => {
             key={index}
             to={link.path}
             className={cn(
-              buttonVariants({ variant: link.variant, size: "sm" }),
-              link.variant === "default" &&
+              buttonVariants({ variant: currentPath === link.path ? "default" : "ghost", size: "sm" }),
+              currentPath === link.path &&
                 "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
               "justify-start"
             )}
@@ -63,8 +66,8 @@ const Component: FC<Props> = ({ links, isCollapsed }) => {
               <span
               className={cn(
                 "ml-auto",
-                link.variant === "default" &&
-                "text-background dark:text-white"
+                currentPath === link.path &&
+                  "text-background dark:text-white"
                 )}
                 >
                 {link.label}

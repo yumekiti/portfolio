@@ -34,12 +34,18 @@ const writing = [
   },
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 const info = "はじめまして、ゆめきちです。このサイトでは、日々の学びや経験を共有しています。";
-const introduction = "現在はウェブ開発者として活動しています。フロントエンドからバックエンド、そしてインフラまで幅広く学びながら実践しています。私の目標は、ウェブ技術の力を通じて人々の生活をより便利で豊かにすることです。一人でも多くの人が、私の開発したアプリやサービスを通じて、より便利で快適な生活を送ることができるよう努めています。この目標を達成するために、日々の学びや経験を共有することで、誰かの役に立てることを願っています。";
+const introduction = `
+  現在はウェブ開発者として活動しています。
+  私の目標は、幅広い技術を学び、実践することで、人々の生活をより便利で豊かにするために貢献したいと考えています。
+  フロントエンドからバックエンド、そしてインフラまでの知識を習得し、アプリやサービスを開発しており、
+  一人でも多くの人が、私の開発したアプリやサービスを通じて、より便利で快適な生活を送ることができるよう努めています。
+  その一環として、このサイトでは私の学びや経験を共有しています。
+`;
 
 const Component = () => {
   return (
     <Layout>
-      <ScrollArea className="h-full bg-gray-100 dark:bg-gray-800">
+      <ScrollArea className="w-full h-full bg-gray-100 dark:bg-gray-800">
         <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
           <Introduction info={info} introduction={introduction} />
           <WritingTable writing={writing} />

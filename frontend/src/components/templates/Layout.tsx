@@ -9,35 +9,43 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
-import Logo from "@/components/atoms/Logo";
-import ThemeSwitcher from "@/components/molecules/ThemeSwitcher";
 
 type Prop = {
   children: ReactNode;
 };
 
 const Component: FC<Prop> = ({ children }) => {
+  const [defaultSize, setDefaultSize] = useState<number>(localStorage.getItem("sidebarSize") ? Number(localStorage.getItem("sidebarSize")) : 18);
   const [isCollapsed, setIsCollapsed] = useState(false)
+
+  const handleCollapse = () => {
+    setIsCollapsed(true);
+  }
+
+  const handleExpand = () => {
+    setIsCollapsed(false);
+  }
+
+  const handleResize = (size: number) => {
+    localStorage.setItem("sidebarSize", size.toString());
+    setDefaultSize(size);
+  }
 
   return (
     <div className="app h-screen flex flex-col">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <TooltipProvider delayDuration={0}>
-            {/* <nav className="flex justify-between items-center border-b border-border px-4 py-2">
-              <Logo />
-              <div className="flex gap-4 items-center">
-                <ThemeSwitcher />
-              </div>
-            </nav> */}
             <ResizablePanelGroup
               direction="horizontal"
             >
               <ResizablePanel
                 minSize={14}
                 maxSize={18}
+                defaultSize={defaultSize}
                 collapsible={true}
-                onCollapse={() => setIsCollapsed(true)}
-                onExpand={() => setIsCollapsed(false)}
+                onCollapse={handleCollapse}
+                onExpand={handleExpand}
+                onResize={handleResize}
                 className={cn(isCollapsed && "min-w-[60px] transition-all duration-300 ease-in-out")}
               >
                 <NavigationMenu isCollapsed={isCollapsed} />

@@ -53,7 +53,7 @@ const Component: FC<Props> = ({ writing }) => {
               {writing
                 .filter(row => formatYear(row.date) === year)
                 .map(row => (
-                  <TableRow key={row.id} className="dark:hover:bg-slate-700 hover:bg-slate-400 border-slate-400 dark:border-slate-600 cursor-pointer" onClick={handleRowClick(row.uuid)}>
+                  <TableRow key={row.id} className="dark:hover:bg-slate-600 hover:bg-slate-300 border-slate-400 dark:border-slate-600 cursor-pointer" onClick={handleRowClick(row.uuid)}>
                     <TableCell className="p-2">{formatDate(row.date)}</TableCell>
                     <TableCell className="p-2">{row.title}</TableCell>
                     <TableCell className="p-2 text-right">{row.views}</TableCell>
