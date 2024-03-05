@@ -12,24 +12,36 @@ import {
 import { FileText } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from 'rehype-raw';
 import mermaid from 'mermaid';
 import { useEffect, useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 const exampleText = `
 `
 
 const Component = () => {
   const [open, setOpen] = useState(false);
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
   const handleCardClick = (uuid: string) => () => {
   }
@@ -50,6 +62,20 @@ const Component = () => {
     }, 1000);
   }, [exampleText, open]);
 
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+ 
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+ 
+    api.on("select", () => {
+      console.log("current")
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
   return (
     <Layout>
       <ScrollArea className="w-full h-full bg-secondary">
@@ -59,8 +85,8 @@ const Component = () => {
             <p>ここでは、私のこれまでの制作物について紹介しています。</p>
           </div>
           <div className="grid grid-cols-2 gap-8">
-            <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger>
                 <Card
                   className="hover:shadow-lg duration-300 hover:-translate-y-1 transform"
                   onClick={handleCardClick("00000000-0000-0000-0000-000000000000")}
@@ -83,28 +109,43 @@ const Component = () => {
                     </span>
                   </CardFooter>
                 </Card>
-              </SheetTrigger>
-              <SheetContent className="min-w-[60vw] bg-secondary">
-                <div className="flex flex-col h-full space-y-2">
-                  <SheetHeader>
-                    <SheetTitle>Marplify</SheetTitle>
-                    <SheetDescription>
-                      This action cannot be undone. This will permanently delete your account
-                      and remove your data from our servers.
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="overflow-y-auto p-4" style={{ scrollbarWidth: "none" }}>
-                    <img src="https://placekitten.com/500/300" alt="Marplify" />
-                    <ReactMarkdown
-                      className='markdown text-foreground'
-                      remarkPlugins={[remarkGfm]}
-                      rehypePlugins={[rehypeRaw]}
-                      children={exampleText}
-                    />
-                  </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                    This action cannot be undone. This will permanently delete your account
+                    and remove your data from our servers.
+                  </DialogDescription>
+                </DialogHeader>
+                <Carousel setApi={setApi} className="w-full max-w-xs mx-auto"
+                  plugins={[
+                    Autoplay({
+                      delay: 3000,
+                    }),
+                  ]}            
+                >
+                  <CarouselContent>
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <CarouselItem key={index}>
+                        <div className="p-1">
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-6">
+                              <span className="text-4xl font-semibold">{index + 1}</span>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+                <div className="py-2 text-center text-sm text-muted-foreground">
+                  Slide {current} of {count}
                 </div>
-              </SheetContent>
-            </Sheet>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </ScrollArea>
