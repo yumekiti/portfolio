@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import "@/markdown.css"
+import rehypeRaw from 'rehype-raw'
 
 const writing = [
   {
@@ -129,11 +130,12 @@ const Component = () => {
             </div>
           </div>
         </ScrollArea>
-        <ScrollArea className="w-full h-full bg-gray-100 dark:bg-gray-800">
+        <ScrollArea className="w-full h-full bg-secondary">
           <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
             <ReactMarkdown
               className='markdown text-foreground'
               remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
               children={exampleText}
             />
           </div>

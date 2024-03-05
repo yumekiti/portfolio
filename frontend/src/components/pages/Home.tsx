@@ -45,7 +45,7 @@ const introduction = `
 const Component = () => {
   return (
     <Layout>
-      <ScrollArea className="w-full h-full bg-gray-100 dark:bg-gray-800">
+      <ScrollArea className="w-full h-full bg-secondary">
         <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
           <Introduction info={info} introduction={introduction} />
           <WritingTable writing={writing} />

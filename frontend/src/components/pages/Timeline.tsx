@@ -9,91 +9,47 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { School } from "lucide-react";
 
 const Component = () => {
   return (
     <Layout>
-      <ScrollArea className="w-full h-full bg-gray-100 dark:bg-gray-800">
+      <ScrollArea className="w-full h-full bg-secondary">
         <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
           <div className="space-y-2">
             <LinkWithTwemoji path="/timeline" emoji="📅" text="Timeline" />
             <p>ここでは、私のこれまでの経歴について紹介しています。</p>
           </div>
           <div className="space-y-2">
-            <div
-              className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50"
-            >
-              <div className="flex flex-row-reverse md:contents">
-                <Card className="col-start-1 col-end-5 rounded-xl my-4 ml-auto shadow-md">
+            <div className="grid grid-cols-6 w-full">
+
+              <div className="contents">
+                <div className="col-start-1 col-end-2 mx-auto relative">
+                  <div className="h-full w-12 flex items-center justify-center flex-col space-y-2">
+                    <p className="text-xl">2021</p>
+                    <div className="h-full w-1 bg-slate-700 pointer-events-none" />
+                  </div>
+                  <div className="w-12 h-12 absolute top-1/2 -mt-3 rounded-full bg-slate-400 shadow flex items-center justify-center">
+                    <School className="w-6 h-6 text-slate-700" />
+                  </div>
+                </div>
+                <Card className="col-start-2 col-end-6 rounded-xl my-4 ml-auto shadow-md">
                   <CardHeader>
                     <CardTitle className="flex flex-col">
                       <p className="text-lg font-semibold">
                         ECCコンピュータ専門学校
                       </p>
-                      <span className="text-sm font-normal">
-                        (2019年4月 - 2021年3月)
-                      </span>
                     </CardTitle>
+                    <CardDescription>
+                    ここでは、基礎的なプログラミングを学びました。ここでは、基礎的なプログラミングを学びました。ここでは、基礎的なプログラミングを学びました。ここでは、基礎的なプログラミングを学びました。ここでは、基礎的なプログラミングを学びました。ここでは、基礎的なプログラミングを学びました。
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription>
-                      ここでは、基礎的なプログラミングを学びました。
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-                <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
-                  <div className="h-full w-6 flex items-center justify-center">
-                    <div className="h-full w-1 bg-slate-700 pointer-events-none"></div>
-                  </div>
-                  <div
-                    className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-slate-400 shadow"
-                  ></div>
-                </div>
-              </div>
-
-              <div className="flex md:contents">
-                <div className="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-                  <div className="h-full w-6 flex items-center justify-center">
-                    <div className="h-full w-1 bg-slate-700 pointer-events-none"></div>
-                  </div>
-                  <div
-                    className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-slate-400 shadow"
-                  ></div>
-                </div>
-                <Card className="col-start-6 col-end-10 rounded-xl my-4 mr-auto shadow-md">
-                  <CardHeader>
-                    <CardTitle>Lorem ipsum</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Vitae, facilis.
-                    </CardDescription>
+                    <img src="https://placekitten.com/500/300" alt="Marplify" className="w-full" />
                   </CardContent>
                 </Card>
               </div>
 
-              <div className="flex flex-row-reverse md:contents">
-                <Card className="col-start-1 col-end-5 rounded-xl my-4 ml-auto shadow-md">
-                  <CardHeader>
-                    <CardTitle>Lorem ipsum</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Modi, quaerat?
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-                <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
-                  <div className="h-full w-6 flex items-center justify-center">
-                    <div className="h-full w-1 bg-slate-700 pointer-events-none"></div>
-                  </div>
-                  <div
-                    className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-slate-400 shadow"
-                  ></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

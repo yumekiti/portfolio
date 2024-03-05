@@ -38,7 +38,7 @@ const Component: FC<Props> = ({ writing }) => {
       <Table>
         <TableCaption>Writing History</TableCaption>
         <TableHeader>
-          <TableRow className="border-slate-600 dark:border-slate-300">
+          <TableRow className="border-primary">
             <TableHead className="p-2 w-[60px]">Date</TableHead>
             <TableHead className="p-2">Title</TableHead>
             <TableHead className="p-2 text-right">Views</TableHead>
