@@ -48,9 +48,9 @@ const Component = () => {
   const tags = Array.from(new Set(stack.map(row => row.tag)));
 
   return (
-    <Layout>
+    <>
       <ScrollArea className="w-full h-full">
-        <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
+        <div className="w-full xl:w-[48vw] mx-auto py-24 space-y-8 px-2 md:px-20">
           <div className="space-y-2">
             <LinkWithTwemoji path="/stack" emoji="📚" text="Stack" />
             <p>ここでは、私のスキルや経験について紹介しています。</p>
@@ -77,7 +77,7 @@ const Component = () => {
           </div>
         </div>
       </ScrollArea>
-    </Layout>
+    </>
   );
 };
 

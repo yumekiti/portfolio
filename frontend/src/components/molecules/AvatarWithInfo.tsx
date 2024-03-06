@@ -31,20 +31,19 @@ const Component: FC<Props> = ({ profile, isCollapsed }) => {
                 "h-full w-full py-2",
               )}
             >
-              <img
-                src={profile.avatar}
-                alt="avatar"
-                className="rounded-full w-8 h-8"
-              />
+              <Avatar className="w-8 h-8 border">
+                <AvatarImage src={profile.avatar} alt="avatar" />
+                <AvatarFallback>{profile.name[0]}</AvatarFallback>
+              </Avatar>
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right" className="flex items-center gap-4">
-            <Avatar className="w-10 h-10">
+            <Avatar className="w-10 h-10 border">
               <AvatarImage src={profile.avatar} alt="avatar" />
               <AvatarFallback>{profile.name[0]}</AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-lg font-bold">{profile.name}</h1>
+              <h1 className="text-base font-bold">{profile.name}</h1>
               <p className="text-muted-foreground text-sm">{profile.description}</p>
             </div>
           </TooltipContent>
@@ -57,7 +56,7 @@ const Component: FC<Props> = ({ profile, isCollapsed }) => {
             "h-full w-full gap-2 py-2 flex justify-start items-center px-2 whitespace-pre-wrap",
           )}
         >
-          <Avatar className="w-14 h-14">
+          <Avatar className="w-14 h-14 border">
             <AvatarImage src={profile.avatar} alt="avatar" />
             <AvatarFallback>{profile.name[0]}</AvatarFallback>
           </Avatar>

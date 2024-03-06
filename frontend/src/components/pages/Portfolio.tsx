@@ -53,9 +53,9 @@ const Component = () => {
   }, [api])
 
   return (
-    <Layout>
+    <>
       <ScrollArea className="w-full h-full">
-        <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
+        <div className="w-full xl:w-[48vw] mx-auto py-24 space-y-8 px-2 md:px-20">
           <div className="space-y-2">
             <LinkWithTwemoji path="/portfolio" emoji="📁" text="Portfolio" />
             <p>ここでは、私のこれまでの制作物について紹介しています。</p>
@@ -64,7 +64,7 @@ const Component = () => {
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
                 <Card
-                  className="hover:shadow-lg duration-300 hover:-translate-y-1 transform"
+                  className="hover:shadow-lg duration-300 hover:-rotate-2"
                   onClick={handleCardClick("00000000-0000-0000-0000-000000000000")}
                 >
                   <CardContent className="p-4 space-y-4">
@@ -98,7 +98,7 @@ const Component = () => {
                   <Carousel setApi={setApi} className="w-full mx-auto"
                     plugins={[
                       Autoplay({
-                        delay: 2000,
+                        delay: 3000,
                         waitForUser: true,
                       }),
                     ]}            
@@ -122,7 +122,7 @@ const Component = () => {
           </div>
         </div>
       </ScrollArea>
-    </Layout>
+    </>
   );
 };
 

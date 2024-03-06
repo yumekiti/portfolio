@@ -99,7 +99,7 @@ const Component = () => {
   console.log(uuid);
 
   return (
-    <Layout>
+    <>
       <div className="flex h-full w-full">
         <ScrollArea className="hidden flex border-r border-border h-full w-[30rem]">
           <div className="p-4 border-b border-border">
@@ -124,7 +124,7 @@ const Component = () => {
         </ScrollArea>
         <ScrollArea className="w-full h-full">
           {uuid ?
-            <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
+            <div className="w-full xl:w-[48vw] mx-auto py-24 space-y-8 px-2 md:px-20">
               <ReactMarkdown
                 className='markdown text-foreground'
                 remarkPlugins={[remarkGfm]}
@@ -137,7 +137,7 @@ const Component = () => {
           }
         </ScrollArea>
       </div>
-    </Layout>
+    </>
   );
 };
 

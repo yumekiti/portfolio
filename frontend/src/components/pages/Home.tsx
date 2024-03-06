@@ -44,14 +44,12 @@ const introduction = `
 
 const Component = () => {
   return (
-    <Layout>
-      <ScrollArea className="w-full h-full">
-        <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
-          <Introduction info={info} introduction={introduction} />
-          <WritingTable writing={writing} />
-        </div>
-      </ScrollArea>
-    </Layout>
+    <ScrollArea className="w-full h-full">
+      <div className="w-full xl:w-[48vw] mx-auto py-24 space-y-8 px-2 md:px-20">
+        <Introduction info={info} introduction={introduction} />
+        <WritingTable writing={writing} />
+      </div>
+    </ScrollArea>
   );
 };
 

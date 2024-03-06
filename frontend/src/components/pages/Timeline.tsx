@@ -13,11 +13,11 @@ import { School } from "lucide-react";
 
 const Component = () => {
   return (
-    <Layout>
+    <>
       <ScrollArea className="w-full h-full">
-        <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
+        <div className="w-full xl:w-[48vw] mx-auto py-24 space-y-8 px-2 md:px-20">
           <div className="space-y-2">
-            <LinkWithTwemoji path="/timeline" emoji="📅" text="Timeline" />
+            <LinkWithTwemoji path="/timeline" emoji="🕒" text="Timeline" />
             <p>ここでは、私のこれまでの経歴について紹介しています。</p>
           </div>
           <div className="space-y-2">
@@ -52,7 +52,7 @@ const Component = () => {
           </div>
         </div>
       </ScrollArea>
-    </Layout>
+    </>
   );
 };
 

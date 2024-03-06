@@ -2,11 +2,11 @@ import Layout from "@/components/templates/Layout";
 
 const Component = () => {
   return (
-    <Layout>
-      <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
+    <>
+      <div className="w-full xl:w-[48vw] mx-auto py-24 space-y-8 px-2 md:px-20">
         <p>404</p>
       </div>
-    </Layout>
+    </>
   );
 };
 
