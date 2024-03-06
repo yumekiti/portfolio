@@ -1,6 +1,6 @@
 import Layout from "@/components/templates/Layout";
 import { ScrollArea } from "../ui/scroll-area";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { buttonVariants } from "@/components/ui/button"
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
@@ -67,7 +67,7 @@ const exampleText = `
 
 ## 画像
 
-![代替テキスト](https://example.com/image.jpg)
+![代替テキスト](https://placekitten.com/1024/576)
 
 ## コード
 
@@ -94,51 +94,47 @@ def greet():
 `
 
 const Component = () => {
+  const { uuid } = useParams();
+
+  console.log(uuid);
+
   return (
     <Layout>
       <div className="flex h-full w-full">
-        <ScrollArea className="hidden lg:flex h-full lg:border-r lg:w-80 xl:w-96">
-          <div>
-            <div className="p-4 border-b border-border">
-              <p>Writing</p>
-            </div>
-            <div className="p-1 space-y-4">
-              <Link to="/writing" className="py-4 px-4 flex flex-col space-y-1 hover:bg-accent p-2 rounded-md">
-                <p>title</p>
+        <ScrollArea className="hidden flex border-r border-border h-full w-[30rem]">
+          <div className="p-4 border-b border-border">
+            <p>Writing</p>
+          </div>
+          <div className="p-1 space-y-4">
+            {writing.map((post) => (
+              <Link
+                to={`/writing/${post.uuid}`}
+                key={post.id}
+                className="py-4 px-4 flex flex-col space-y-1 hover:bg-accent p-2 rounded-md"
+              >
+                <p>{post.title}</p>
                 <div className="text-xs text-gray-500 dark:text-gray-400 space-x-1">
-                  <span>2021-10-01</span>
+                  <span>{post.date}</span>
                   <span>·</span>
-                  <span className="tabular-nums">100 views</span>
+                  <span className="tabular-nums">{post.views} views</span>
                 </div>
               </Link>
-              <Link to="/writing" className="py-4 px-4 flex flex-col space-y-1 hover:bg-accent p-2 rounded-md">
-                <p>title</p>
-                <div className="text-xs text-gray-500 dark:text-gray-400 space-x-1">
-                  <span>2021-10-01</span>
-                  <span>·</span>
-                  <span className="tabular-nums">100 views</span>
-                </div>
-              </Link>
-              <Link to="/writing" className="py-4 px-4 flex flex-col space-y-1 hover:bg-accent p-2 rounded-md">
-                <p>title</p>
-                <div className="text-xs text-gray-500 dark:text-gray-400 space-x-1">
-                  <span>2021-10-01</span>
-                  <span>·</span>
-                  <span className="tabular-nums">100 views</span>
-                </div>
-              </Link>
-            </div>
+            ))}
           </div>
         </ScrollArea>
-        <ScrollArea className="w-full h-full bg-secondary">
-          <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
-            <ReactMarkdown
-              className='markdown text-foreground'
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
-              children={exampleText}
-            />
-          </div>
+        <ScrollArea className="w-full h-full">
+          {uuid ?
+            <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
+              <ReactMarkdown
+                className='markdown text-foreground'
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                children={exampleText}
+              />
+            </div>
+            :
+            <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+          }
         </ScrollArea>
       </div>
     </Layout>

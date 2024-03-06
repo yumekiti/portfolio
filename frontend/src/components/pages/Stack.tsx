@@ -49,8 +49,8 @@ const Component = () => {
 
   return (
     <Layout>
-      <ScrollArea className="w-full h-full bg-secondary">
-        <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
+      <ScrollArea className="w-full h-full">
+        <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
           <div className="space-y-2">
             <LinkWithTwemoji path="/stack" emoji="📚" text="Stack" />
             <p>ここでは、私のスキルや経験について紹介しています。</p>

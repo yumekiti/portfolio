@@ -19,10 +19,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from 'rehype-raw';
-import mermaid from 'mermaid';
 import { useEffect, useState } from "react";
 import {
   Carousel,
@@ -34,9 +30,6 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 
-const exampleText = `
-`
-
 const Component = () => {
   const [open, setOpen] = useState(false);
   const [api, setApi] = useState<CarouselApi>()
@@ -47,22 +40,6 @@ const Component = () => {
   }
 
   useEffect(() => {
-    const runMermaid = async () => {
-      try {
-        await mermaid.run({
-          querySelector: 'code.language-mermaid',
-        });
-      } catch (error) {
-        console.error('Error running mermaid:', error);
-      }
-    };
-
-    setTimeout(() => {
-      runMermaid();
-    }, 1000);
-  }, [exampleText, open]);
-
-  useEffect(() => {
     if (!api) {
       return
     }
@@ -71,15 +48,14 @@ const Component = () => {
     setCurrent(api.selectedScrollSnap() + 1)
  
     api.on("select", () => {
-      console.log("current")
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
 
   return (
     <Layout>
-      <ScrollArea className="w-full h-full bg-secondary">
-        <div className="w-full xl:w-[40vw] container mx-auto py-24 space-y-8">
+      <ScrollArea className="w-full h-full">
+        <div className="w-full xl:w-[48vw] container mx-auto py-24 space-y-8">
           <div className="space-y-2">
             <LinkWithTwemoji path="/portfolio" emoji="📁" text="Portfolio" />
             <p>ここでは、私のこれまでの制作物について紹介しています。</p>
@@ -110,7 +86,7 @@ const Component = () => {
                   </CardFooter>
                 </Card>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="md:max-w-4xl py-8">
                 <DialogHeader>
                   <DialogTitle>Are you absolutely sure?</DialogTitle>
                   <DialogDescription>
@@ -118,29 +94,26 @@ const Component = () => {
                     and remove your data from our servers.
                   </DialogDescription>
                 </DialogHeader>
-                <Carousel setApi={setApi} className="w-full max-w-xs mx-auto"
-                  plugins={[
-                    Autoplay({
-                      delay: 3000,
-                    }),
-                  ]}            
-                >
-                  <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <CarouselItem key={index}>
-                        <div className="p-1">
-                          <Card>
-                            <CardContent className="flex aspect-square items-center justify-center p-6">
-                              <span className="text-4xl font-semibold">{index + 1}</span>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
+                <div className="relative w-full px-0 md:px-12">
+                  <Carousel setApi={setApi} className="w-full mx-auto"
+                    plugins={[
+                      Autoplay({
+                        delay: 2000,
+                        waitForUser: true,
+                      }),
+                    ]}            
+                  >
+                    <CarouselContent>
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <CarouselItem key={index}>
+                          <img src="https://placekitten.com/1024/576" alt="Marplify" />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="hidden md:flex" />
+                    <CarouselNext className="hidden md:flex" />
+                  </Carousel>
+                </div>
                 <div className="py-2 text-center text-sm text-muted-foreground">
                   Slide {current} of {count}
                 </div>
