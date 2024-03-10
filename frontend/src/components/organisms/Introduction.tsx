@@ -9,7 +9,7 @@ type Props = {
 const Component: FC<Props> = ({ info, introduction }) => {
   return (
     <div className="space-y-2">
-      <LinkWithTwemoji path="/" emoji="👋" text="Welcome" />
+      <LinkWithTwemoji path="/" emoji="👨‍💻" text="About" />
       <p className="text-lg">{info}</p>
       <p>{introduction}</p>
     </div>
