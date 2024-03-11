@@ -1,0 +1,108 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type About {
+  id: Int!
+}
+
+input CreateAboutInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreatePortfolioInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateStackInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateTimelineInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateWritingInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Mutation {
+  createAbout(createAboutInput: CreateAboutInput!): About!
+  createPortfolio(createPortfolioInput: CreatePortfolioInput!): Portfolio!
+  createStack(createStackInput: CreateStackInput!): Stack!
+  createTimeline(createTimelineInput: CreateTimelineInput!): Timeline!
+  createWriting(createWritingInput: CreateWritingInput!): Writing!
+  removeAbout(id: Int!): About!
+  removePortfolio(id: Int!): Portfolio!
+  removeStack(id: Int!): Stack!
+  removeTimeline(id: Int!): Timeline!
+  removeWriting(id: Int!): Writing!
+  updateAbout(updateAboutInput: UpdateAboutInput!): About!
+  updatePortfolio(updatePortfolioInput: UpdatePortfolioInput!): Portfolio!
+  updateStack(updateStackInput: UpdateStackInput!): Stack!
+  updateTimeline(updateTimelineInput: UpdateTimelineInput!): Timeline!
+  updateWriting(updateWritingInput: UpdateWritingInput!): Writing!
+}
+
+type Portfolio {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  about(id: Int!): About!
+  portfolio(id: Int!): Portfolio!
+  stack(id: Int!): Stack!
+  timeline(id: Int!): Timeline!
+  writing(id: Int!): Writing!
+}
+
+type Stack {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Timeline {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAboutInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdatePortfolioInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateStackInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateTimelineInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateWritingInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+type Writing {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}

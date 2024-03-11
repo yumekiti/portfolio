@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  web:
+    image: node:18.18.2-alpine
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 5173:5173
+    environment:
+      TZ: Asia/Tokyo
+    command: >
+      sh -c "
+        npm i &&
+        npm run dev -- --host 0.0.0.0
+      "
+  api:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    ports:
+      - 3000:3000
+    environment:
+      TZ: Asia/Tokyo
+    command: >
+      sh -c "
+        npm i &&
+        npm run start:dev
+      "
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database
+      TZ: Asia/Tokyo
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  tbls:
+    image: k1low/tbls
+    working_dir: /work
+    volumes:
+      - ./:/work
+    environment:
+      TZ: Asia/Tokyo
+    command: doc --force
+    depends_on:
+      - db
