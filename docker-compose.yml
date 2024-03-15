@@ -15,6 +15,20 @@ services:
         npm i &&
         npm run dev -- --host 0.0.0.0
       "
+  cms:
+    image: node:18.18.2-alpine
+    working_dir: /app
+    volumes:
+      - ./cms:/app
+    ports:
+      - 8080:5173
+    environment:
+      TZ: Asia/Tokyo
+    command: >
+      sh -c "
+        npm i &&
+        npm run dev -- --host 0.0.0.0
+      "
   api:
     image: node:18-alpine
     working_dir: /app
