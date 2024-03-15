@@ -24,8 +24,8 @@ export class Portfolio {
   @Field(() => [PortfolioImage])
   images: PortfolioImage[];
 
-  @Column()
-  @Field()
+  @OneToMany(() => Link, link => link.portfolio)
+  @Field(() => [Link])
   links: string;
 
   @Column({ default: 0 })
@@ -53,6 +53,30 @@ export class PortfolioImage {
   url: string;
 
   @ManyToOne(() => Portfolio, portfolio => portfolio.images)
+  @Field(() => Portfolio)
+  portfolio: Portfolio;
+}
+
+@Entity()
+@ObjectType()
+export class Link {
+  @PrimaryGeneratedColumn()
+  @Field(() => Int)
+  id: number;
+
+  @Column()
+  @Field()
+  title: string;
+
+  @Column()
+  @Field()
+  emoji: string;
+
+  @Column()
+  @Field()
+  url: string;
+
+  @ManyToOne(() => Portfolio, portfolio => portfolio.links)
   @Field(() => Portfolio)
   portfolio: Portfolio;
 }

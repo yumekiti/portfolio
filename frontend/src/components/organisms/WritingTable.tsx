@@ -11,7 +11,6 @@ import { FC, Fragment } from "react";
 import { WritingTableProps } from "@/types/writing";
 import LinkWithTwemoji from "@/components/atoms/LinkWithTwemoji";
 import { useNavigate } from "react-router-dom";
-import { buttonVariants } from "@/components/ui/button"
 
 const formatYear = (date: string) => {
   return new Date(date).getFullYear();
