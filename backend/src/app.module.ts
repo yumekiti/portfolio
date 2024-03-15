@@ -3,11 +3,10 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AboutModule } from './about/about.module';
-import { WritingModule } from './writing/writing.module';
-import { StackModule } from './stack/stack.module';
-import { TimelineModule } from './timeline/timeline.module';
-import { PortfolioModule } from './portfolio/portfolio.module';
+import { WritingsModule } from './writings/writings.module';
+import { StacksModule } from './stacks/stacks.module';
+import { TimelinesModule } from './timelines/timelines.module';
+import { PortfoliosModule } from './portfolios/portfolios.module';
 
 @Module({
   imports: [
@@ -26,11 +25,10 @@ import { PortfolioModule } from './portfolio/portfolio.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
     }),
-    AboutModule,
-    WritingModule,
-    StackModule,
-    TimelineModule,
-    PortfolioModule,
+    WritingsModule,
+    StacksModule,
+    TimelinesModule,
+    PortfoliosModule,
   ],
   controllers: [],
   providers: [],

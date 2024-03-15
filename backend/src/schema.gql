@@ -2,18 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type About {
-  id: Int!
-}
-
-input CreateAboutInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+input CreatePortfolioImageInput {
+  url: String!
 }
 
 input CreatePortfolioInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  description: String!
+  images: [CreatePortfolioImageInput!]!
+  links: String!
+  thumbnail: String!
+  title: String!
 }
 
 input CreateStackInput {
@@ -31,18 +29,20 @@ input CreateWritingInput {
   exampleField: Int!
 }
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Mutation {
-  createAbout(createAboutInput: CreateAboutInput!): About!
   createPortfolio(createPortfolioInput: CreatePortfolioInput!): Portfolio!
   createStack(createStackInput: CreateStackInput!): Stack!
   createTimeline(createTimelineInput: CreateTimelineInput!): Timeline!
   createWriting(createWritingInput: CreateWritingInput!): Writing!
-  removeAbout(id: Int!): About!
   removePortfolio(id: Int!): Portfolio!
   removeStack(id: Int!): Stack!
   removeTimeline(id: Int!): Timeline!
   removeWriting(id: Int!): Writing!
-  updateAbout(updateAboutInput: UpdateAboutInput!): About!
   updatePortfolio(updatePortfolioInput: UpdatePortfolioInput!): Portfolio!
   updateStack(updateStackInput: UpdateStackInput!): Stack!
   updateTimeline(updateTimelineInput: UpdateTimelineInput!): Timeline!
@@ -50,16 +50,32 @@ type Mutation {
 }
 
 type Portfolio {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  createdAt: DateTime!
+  description: String!
+  id: Int!
+  images: [PortfolioImage!]!
+  links: String!
+  thumbnail: String!
+  title: String!
+  updatedAt: DateTime!
+  views: Int!
+}
+
+type PortfolioImage {
+  id: Int!
+  portfolio: Portfolio!
+  url: String!
 }
 
 type Query {
-  about(id: Int!): About!
   portfolio(id: Int!): Portfolio!
+  portfolios: [Portfolio!]!
   stack(id: Int!): Stack!
+  stacks: [Stack!]!
   timeline(id: Int!): Timeline!
+  timelines: [Timeline!]!
   writing(id: Int!): Writing!
+  writings: [Writing!]!
 }
 
 type Stack {
@@ -72,16 +88,13 @@ type Timeline {
   exampleField: Int!
 }
 
-input UpdateAboutInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
 input UpdatePortfolioInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  description: String
   id: Int!
+  images: [CreatePortfolioImageInput!]
+  links: String
+  thumbnail: String
+  title: String
 }
 
 input UpdateStackInput {
