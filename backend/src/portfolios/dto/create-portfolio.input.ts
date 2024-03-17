@@ -1,5 +1,8 @@
 import { InputType, Field } from '@nestjs/graphql';
 
+import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import * as Upload from 'graphql-upload/Upload.js';
+
 @InputType()
 export class CreatePortfolioInput {
   @Field()
@@ -9,17 +12,8 @@ export class CreatePortfolioInput {
   description: string;
 
   @Field()
-  thumbnail: string;
+  date: string;
 
-  @Field(() => [CreatePortfolioImageInput])
-  images: CreatePortfolioImageInput[];
-
-  @Field()
-  links: string;
-}
-
-@InputType()
-export class CreatePortfolioImageInput {
-  @Field()
-  url: string;
+  @Field({ nullable: true })
+  thumbnail?: string;
 }

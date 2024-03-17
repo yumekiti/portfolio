@@ -7,9 +7,14 @@ import { WritingsModule } from './writings/writings.module';
 import { StacksModule } from './stacks/stacks.module';
 import { TimelinesModule } from './timelines/timelines.module';
 import { PortfoliosModule } from './portfolios/portfolios.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      serveRoot: '/',
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'db',

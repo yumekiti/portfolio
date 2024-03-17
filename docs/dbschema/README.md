@@ -6,21 +6,7 @@
 | ---- | ------- | ------- | ---- |
 | [public.portfolio](public.portfolio.md) | 8 |  | BASE TABLE |
 | [public.portfolio_image](public.portfolio_image.md) | 3 |  | BASE TABLE |
-
-## Stored procedures and functions
-
-| Name | ReturnType | Arguments | Type |
-| ---- | ------- | ------- | ---- |
-| public.uuid_nil | uuid |  | FUNCTION |
-| public.uuid_ns_dns | uuid |  | FUNCTION |
-| public.uuid_ns_url | uuid |  | FUNCTION |
-| public.uuid_ns_oid | uuid |  | FUNCTION |
-| public.uuid_ns_x500 | uuid |  | FUNCTION |
-| public.uuid_generate_v1 | uuid |  | FUNCTION |
-| public.uuid_generate_v1mc | uuid |  | FUNCTION |
-| public.uuid_generate_v3 | uuid | namespace uuid, name text | FUNCTION |
-| public.uuid_generate_v4 | uuid |  | FUNCTION |
-| public.uuid_generate_v5 | uuid | namespace uuid, name text | FUNCTION |
+| [public.portfolio_link](public.portfolio_link.md) | 5 |  | BASE TABLE |
 
 ## Relations
 
@@ -28,21 +14,29 @@
 erDiagram
 
 "public.portfolio_image" }o--o| "public.portfolio" : ""
+"public.portfolio_link" }o--o| "public.portfolio" : ""
 
 "public.portfolio" {
   integer id
   varchar title
   varchar description
+  varchar date
+  varchar thumbnail
+  integer views
   timestamp_without_time_zone createdAt
   timestamp_without_time_zone updatedAt
-  varchar thumbnail
-  varchar links
-  integer views
 }
 "public.portfolio_image" {
   integer id
+  varchar image
   integer portfolioId FK
-  varchar url
+}
+"public.portfolio_link" {
+  integer id
+  varchar title
+  varchar emoji
+  varchar link
+  integer portfolioId FK
 }
 ```
 

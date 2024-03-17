@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { CreatePortfolioInput, CreatePortfolioImageInput } from './dto/create-portfolio.input';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { CreatePortfolioInput } from './dto/create-portfolio.input';
 import { UpdatePortfolioInput } from './dto/update-portfolio.input';
 import { Portfolio, PortfolioImage } from './entities/portfolio.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { createWriteStream } from 'fs';
 
 @Injectable()
 export class PortfoliosService {
@@ -16,12 +17,6 @@ export class PortfoliosService {
 
   async create(createPortfolioInput: CreatePortfolioInput): Promise<Portfolio> {
     const portfolio = this.portfolioRepository.create(createPortfolioInput);
-    
-    if (createPortfolioInput.images) {
-      const images = createPortfolioInput.images.map(image => this.portfolioImageRepository.create(image));
-      portfolio.images = await this.portfolioImageRepository.save(images);
-    }
-
     return this.portfolioRepository.save(portfolio);
   }
 
@@ -36,19 +31,44 @@ export class PortfoliosService {
   async update(id: number, updatePortfolioInput: UpdatePortfolioInput): Promise<Portfolio> {
     const portfolio = await this.portfolioRepository.findOne({ where: { id }, relations: ['images'] });
     if (!portfolio) return null;
-
-    const updatedPortfolio = this.portfolioRepository.merge(portfolio, updatePortfolioInput);
-    if (updatePortfolioInput.images) {
-      const images = updatePortfolioInput.images.map(image => this.portfolioImageRepository.create(image));
-      updatedPortfolio.images = await this.portfolioImageRepository.save(images);
-    }
-
-    return this.portfolioRepository.save(updatedPortfolio);
+    return this.portfolioRepository.save({ ...portfolio, ...updatePortfolioInput });
   }
 
   async remove(id: number): Promise<Portfolio> {
     const portfolio = await this.portfolioRepository.findOne({ where: { id }, relations: ['images'] });
     if (!portfolio) return null;
     return this.portfolioRepository.remove(portfolio);
+  }
+
+  async uploadImage(file: Express.Multer.File, portfolioId: number): Promise<PortfolioImage> {
+    const portfolio = await this.portfolioRepository.findOne({ where: { id: portfolioId } });
+    if (!portfolio) return null;
+    const image = this.portfolioImageRepository.create({ portfolio, image: file.filename });
+    return this.portfolioImageRepository.save(image);
+  }
+
+  async saveImage(image: {
+    createReadStream: () => any;
+    filename: string;
+    mimetype: string;
+  }) {
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!validImageTypes.includes(image.mimetype)) {
+      throw new BadRequestException({ image: 'Invalid image type' });
+    }
+
+    const imageName = `${Date.now()}-${image.filename}`;
+    const imagePath = `/images/${imageName}`;
+    const stream = image.createReadStream();
+    const outputPath = `public${imagePath}`;
+    const writeStream = createWriteStream(outputPath);
+    stream.pipe(writeStream);
+
+    await new Promise((resolve, reject) => {
+      stream.on('end', resolve);
+      stream.on('error', reject);
+    });
+
+    return imagePath;
   }
 }

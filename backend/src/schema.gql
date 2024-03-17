@@ -2,15 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreatePortfolioImageInput {
-  url: String!
-}
-
 input CreatePortfolioInput {
+  date: String!
   description: String!
-  images: [CreatePortfolioImageInput!]!
-  links: String!
-  thumbnail: String!
+  thumbnail: String
   title: String!
 }
 
@@ -34,16 +29,8 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type Link {
-  emoji: String!
-  id: Int!
-  portfolio: Portfolio!
-  title: String!
-  url: String!
-}
-
 type Mutation {
-  createPortfolio(createPortfolioInput: CreatePortfolioInput!): Portfolio!
+  createPortfolio(createPortfolioInput: CreatePortfolioInput!, images: [Upload!]!, thumbnail: Upload!): Portfolio!
   createStack(createStackInput: CreateStackInput!): Stack!
   createTimeline(createTimelineInput: CreateTimelineInput!): Timeline!
   createWriting(createWritingInput: CreateWritingInput!): Writing!
@@ -59,10 +46,11 @@ type Mutation {
 
 type Portfolio {
   createdAt: DateTime!
+  date: String!
   description: String!
   id: Int!
   images: [PortfolioImage!]!
-  links: [Link!]!
+  links: [PortfolioLink!]
   thumbnail: String!
   title: String!
   updatedAt: DateTime!
@@ -71,8 +59,16 @@ type Portfolio {
 
 type PortfolioImage {
   id: Int!
+  image: String!
   portfolio: Portfolio!
-  url: String!
+}
+
+type PortfolioLink {
+  emoji: String!
+  id: Int!
+  link: String!
+  portfolio: Portfolio!
+  title: String!
 }
 
 type Query {
@@ -108,10 +104,9 @@ type Timeline {
 }
 
 input UpdatePortfolioInput {
+  date: String
   description: String
   id: Int!
-  images: [CreatePortfolioImageInput!]
-  links: String
   thumbnail: String
   title: String
 }
@@ -133,6 +128,9 @@ input UpdateWritingInput {
   exampleField: Int
   id: Int!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 type Writing {
   content: String!

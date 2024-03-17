@@ -3,13 +3,23 @@ import { PortfoliosService } from './portfolios.service';
 import { Portfolio } from './entities/portfolio.entity';
 import { CreatePortfolioInput } from './dto/create-portfolio.input';
 import { UpdatePortfolioInput } from './dto/update-portfolio.input';
+import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import { FileUpload } from 'graphql-upload/GraphQLUpload.js';
 
 @Resolver(() => Portfolio)
 export class PortfoliosResolver {
   constructor(private readonly portfoliosService: PortfoliosService) {}
 
   @Mutation(() => Portfolio)
-  createPortfolio(@Args('createPortfolioInput') createPortfolioInput: CreatePortfolioInput) {
+  async createPortfolio(
+    @Args('createPortfolioInput') createPortfolioInput: CreatePortfolioInput,
+    @Args({ name: 'thumbnail', type: () => GraphQLUpload }) thumbnail: FileUpload,
+    @Args({ name: 'images', type: () => [GraphQLUpload] }) images: FileUpload,
+  ) {
+    if (thumbnail) {
+      createPortfolioInput.thumbnail = await this.portfoliosService.saveImage(thumbnail);
+    };
+
     return this.portfoliosService.create(createPortfolioInput);
   }
 

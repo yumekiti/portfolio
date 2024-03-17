@@ -6,14 +6,14 @@
 
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
-| id | integer | nextval('portfolio_id_seq'::regclass) | false | [public.portfolio_image](public.portfolio_image.md) |  |  |
+| id | integer | nextval('portfolio_id_seq'::regclass) | false | [public.portfolio_image](public.portfolio_image.md) [public.portfolio_link](public.portfolio_link.md) |  |  |
 | title | varchar |  | false |  |  |  |
 | description | varchar |  | false |  |  |  |
+| date | varchar |  | false |  |  |  |
+| thumbnail | varchar |  | true |  |  |  |
+| views | integer | 0 | false |  |  |  |
 | createdAt | timestamp without time zone | now() | false |  |  |  |
 | updatedAt | timestamp without time zone | now() | false |  |  |  |
-| thumbnail | varchar |  | false |  |  |  |
-| links | varchar |  | false |  |  |  |
-| views | integer | 0 | false |  |  |  |
 
 ## Constraints
 
@@ -33,21 +33,29 @@
 erDiagram
 
 "public.portfolio_image" }o--o| "public.portfolio" : ""
+"public.portfolio_link" }o--o| "public.portfolio" : ""
 
 "public.portfolio" {
   integer id
   varchar title
   varchar description
+  varchar date
+  varchar thumbnail
+  integer views
   timestamp_without_time_zone createdAt
   timestamp_without_time_zone updatedAt
-  varchar thumbnail
-  varchar links
-  integer views
 }
 "public.portfolio_image" {
   integer id
+  varchar image
   integer portfolioId FK
-  varchar url
+}
+"public.portfolio_link" {
+  integer id
+  varchar title
+  varchar emoji
+  varchar link
+  integer portfolioId FK
 }
 ```
 

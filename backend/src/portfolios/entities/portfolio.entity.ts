@@ -1,6 +1,8 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { OneToMany, ManyToOne, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn, Generated } from 'typeorm';
 
+import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+
 @Entity()
 @ObjectType()
 export class Portfolio {
@@ -17,16 +19,20 @@ export class Portfolio {
   description: string;
 
   @Column()
+  @Field(() => String)
+  date: string;
+
+  @Column()
   @Field()
   thumbnail: string;
 
-  @OneToMany(() => PortfolioImage, image => image.portfolio)
+  @OneToMany(() => PortfolioImage, image => image.portfolio, { nullable: true })
   @Field(() => [PortfolioImage])
   images: PortfolioImage[];
 
-  @OneToMany(() => Link, link => link.portfolio)
-  @Field(() => [Link])
-  links: string;
+  @OneToMany(() => PortfolioLink, link => link.portfolio)
+  @Field(() => [PortfolioLink], { nullable: true })
+  links: PortfolioLink[];
 
   @Column({ default: 0 })
   @Field(() => Int)
@@ -50,7 +56,7 @@ export class PortfolioImage {
 
   @Column()
   @Field()
-  url: string;
+  image: string;
 
   @ManyToOne(() => Portfolio, portfolio => portfolio.images)
   @Field(() => Portfolio)
@@ -59,7 +65,7 @@ export class PortfolioImage {
 
 @Entity()
 @ObjectType()
-export class Link {
+export class PortfolioLink {
   @PrimaryGeneratedColumn()
   @Field(() => Int)
   id: number;
@@ -74,7 +80,7 @@ export class Link {
 
   @Column()
   @Field()
-  url: string;
+  link: string;
 
   @ManyToOne(() => Portfolio, portfolio => portfolio.links)
   @Field(() => Portfolio)

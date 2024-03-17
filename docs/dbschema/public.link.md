@@ -1,4 +1,4 @@
-# public.portfolio_image
+# public.link
 
 ## Description
 
@@ -6,44 +6,47 @@
 
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 | ---- | ---- | ------- | -------- | -------- | ------- | ------- |
-| id | integer | nextval('portfolio_image_id_seq'::regclass) | false |  |  |  |
-| image | varchar |  | false |  |  |  |
+| id | integer | nextval('link_id_seq'::regclass) | false |  |  |  |
+| url | varchar |  | false |  |  |  |
 | portfolioId | integer |  | true |  | [public.portfolio](public.portfolio.md) |  |
+| title | varchar |  | false |  |  |  |
+| emoji | varchar |  | false |  |  |  |
 
 ## Constraints
 
 | Name | Type | Definition |
 | ---- | ---- | ---------- |
-| FK_cb9b2deac691d5df497afad4854 | FOREIGN KEY | FOREIGN KEY ("portfolioId") REFERENCES portfolio(id) |
-| PK_e2deb2982e8acdea22c1046fd8c | PRIMARY KEY | PRIMARY KEY (id) |
+| FK_7dc5cc10ac16923779ee246ef77 | FOREIGN KEY | FOREIGN KEY ("portfolioId") REFERENCES portfolio(id) |
+| PK_26206fb7186da72fbb9eaa3fac9 | PRIMARY KEY | PRIMARY KEY (id) |
 
 ## Indexes
 
 | Name | Definition |
 | ---- | ---------- |
-| PK_e2deb2982e8acdea22c1046fd8c | CREATE UNIQUE INDEX "PK_e2deb2982e8acdea22c1046fd8c" ON public.portfolio_image USING btree (id) |
+| PK_26206fb7186da72fbb9eaa3fac9 | CREATE UNIQUE INDEX "PK_26206fb7186da72fbb9eaa3fac9" ON public.link USING btree (id) |
 
 ## Relations
 
 ```mermaid
 erDiagram
 
-"public.portfolio_image" }o--o| "public.portfolio" : ""
+"public.link" }o--o| "public.portfolio" : ""
 
-"public.portfolio_image" {
+"public.link" {
   integer id
-  varchar image
+  varchar url
   integer portfolioId FK
+  varchar title
+  varchar emoji
 }
 "public.portfolio" {
   integer id
   varchar title
   varchar description
-  varchar date
-  varchar thumbnail
-  integer views
   timestamp_without_time_zone createdAt
   timestamp_without_time_zone updatedAt
+  varchar thumbnail
+  integer views
 }
 ```
 
