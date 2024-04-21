@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import iconImage from "../../assets/icon.png";
+---
+
+<div class="h-screen grid grid-cols-2 relative">
+  <div class="flex justify-center items-center">
+    <Icon name="earth" class="w-[520px] h-[520px]" />
+    <div class="absolute flex justify-center items-center">
+      <div class="text-6xl leading-[6rem] font-bold">
+        <div class="relative">
+          <h2>「届け」便利</h2>
+          <Icon
+            name="good"
+            class="w-18 h-18 animate-bounce absolute bottom-20 -right-6"
+          />
+          <div
+            class="border-b-4 border-l-4 border-[#3da9fc] w-12 h-12 rotate-12 absolute -top-4 right-1"
+          >
+          </div>
+        </div>
+        <h2>生活に豊かさを</h2>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-end items-center absolute right-0 bottom-72">
+    <div
+      class="z-20 absolute w-[42rem] h-[20rem] rounded-l-[3rem] bg-[#D8EEFE] px-16 py-8 space-y-4"
+    >
+      <div class="flex items-center space-x-4">
+        <Image src={iconImage} alt="icon" class="w-36 h-36 rounded-full" />
+        <h2 class="text-6xl">ゆめきち</h2>
+      </div>
+      <h2 class="text-4xl">インフラエンジニア</h2>
+      <p class="text-[#5F6C7B]">
+        インターネットを通じて便利を届け、生活に豊かさをお届けします。
+      </p>
+    </div>
+    <div
+      class="z-10 absolute w-[41rem] h-[20rem] mt-8 bg-[#3da9fc] rounded-bl-[3rem]"
+    >
+    </div>
+  </div>
+</div>

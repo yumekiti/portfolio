@@ -1,7 +1,7 @@
 // .prettierrc.mjs
 /** @type {import("prettier").Config} */
 export default {
-  printWidth: 100,
+  printWidth: 140,
   semi: true,
   singleQuote: true,
   tabWidth: 2,
