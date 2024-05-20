@@ -7,3 +7,17 @@ html {
 
   color: #094067;
 }
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3da9fc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d8eefe;
+}

@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+
+const skills = [
+  {
+    title: "Programming Language",
+    items: ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "Java", "PHP"],
+  },
+  {
+    title: "Server",
+    items: ["Node.js", "Express", "Nginx", "Apache", "Tomcat"],
+  },
+  {
+    title: "Network",
+    items: ["TCP/IP", "HTTP", "DNS", "SSL/TLS", "SSH"],
+  },
+  {
+    title: "Software Design",
+    items: ["Design Pattern", "SOLID", "DRY", "KISS", "YAGNI", "Crean Architecture"],
+  },
+  {
+    title: "Web Frontend",
+    items: ["React", "Vue", "Angular", "Svelte", "Next.js", "Gatsby"],
+  },
+  {
+    title: "Web Backend",
+    items: ["Express", "Koa", "NestJS", "Spring", "Django", "Flask"],
+  },
+  {
+    title: "Mobile & Desktop",
+    items: ["React Native", "Electron", "Flutter", "Swift", "Kotlin"],
+  },
+  {
+    title: "Other Tools",
+    items: ["Git", "Docker", "Kubernetes", "Jenkins", "Travis CI", "Circle CI"],
+  },
+]
+---
+
+<div class="h-screen flex items-center justify-center">
+  <div class="w-9/12 h-4/6">
+    <h2 class="text-2xl 2xl:text-4xl font-bold">Skills</h2>
+    <div class="grid grid-cols-4 gap-12">
+
+      {skills.map((skill) => (
+        <div class="relative py-12 w-full h-64">
+          <div class="z-20 absolute w-full h-64 bg-[#D8EEFE] rounded-[0.5rem] p-4 space-y-4">
+            <h3 class="text-xl font-bold">{skill.title}</h3>
+            <ul>
+              {skill.items.map((item) => (
+                <li class="flex items-center space-x-2">
+                  <Icon name="good" class="w-4 h-4 text-[#3da9fc]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            class="z-10 absolute w-full h-64 mt-4 ml-4 bg-[#3da9fc] rounded-[0.5rem]"
+          >
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
