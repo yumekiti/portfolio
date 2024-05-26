@@ -2,28 +2,20 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="h-screen flex items-center justify-center">
+<div class="h-screen w-full lg:w-9/12 mx-auto flex flex-col justify-center bg-[#D8EEFE] lg:bg-transparent">
   <div
-    class="z-20 absolute w-[70%] h-4/6 rounded-[3rem] bg-[#D8EEFE] px-16 py-10"
+    class="h-5/6 lg:h-4/6 w-full rounded-none lg:rounded-[3rem] bg-[#D8EEFE] px-8 lg:px-16 py-10 shadow-none lg:shadow-[30px_30px_0] lg:shadow-[#3DA9FC] flex flex-col items-center justify-around"
   >
-    <div
-      class="h-full mx-auto w-[80%] flex flex-col items-center justify-around"
-    >
-      <h2 class="text-2xl 2xl:text-4xl font-bold text-center">
-        言葉に込めた思い
-      </h2>
-      <p class="leading-[2rem] 2xl:leading-[3rem] text-lg 2xl:text-2xl">
-        「届け」便利、生活に豊かさを。この言葉には、私が目指す方向性が込められています。
-        私は人々の生活をより豊かにすることを目指しており、私が提供するサービスやソリューションで、便利さを感じてもらい、生活に貢献できるよう取り組んでいます。
-        便利さと生活の豊かさを追求し、それをネットワーク技術を通じて実現することに力を注いでおり、技術の進歩を通じて、人々の生活をより良いものにし、社会に貢献することが私の目標です。
-      </p>
-      <div class="flex justify-end w-full">
-        <Icon name="send" class="w-44 2xl:w-64 h-full" />
-      </div>
+    <h2 class="text-2xl 2xl:text-4xl font-bold text-center">
+      言葉に込めた思い
+    </h2>
+    <p class="leading-[2.2rem] 2xl:leading-[3rem] text-xl 2xl:text-2xl">
+      「届け」便利、生活に豊かさを。この言葉には、私が目指す方向性が込められています。
+      私は人々の生活をより豊かにすることを目指しており、私が提供するサービスやソリューションで、便利さを感じてもらい、生活に貢献できるよう取り組んでいます。
+      便利さと生活の豊かさを追求し、それをネットワーク技術を通じて実現することに力を注いでおり、技術の進歩を通じて、人々の生活をより良いものにし、社会に貢献することが私の目標です。
+    </p>
+    <div class="flex justify-end w-full">
+      <Icon name="send" class="w-44 2xl:w-64 h-full" />
     </div>
-  </div>
-  <div
-    class="z-10 absolute w-[70%] h-4/6 mt-12 bg-[#3da9fc] rounded-[3rem] ml-12"
-  >
   </div>
 </div>

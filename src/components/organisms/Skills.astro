@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 const skills = [
   {
     title: "Programming Language",
-    items: ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "Java", "PHP"],
+    items: ["JavaScript", "TypeScript", "Python", "Java", "PHP"],
   },
   {
     title: "Server",
@@ -16,7 +16,7 @@ const skills = [
   },
   {
     title: "Software Design",
-    items: ["Design Pattern", "SOLID", "DRY", "KISS", "YAGNI", "Crean Architecture"],
+    items: ["DRY", "Architecture"],
   },
   {
     title: "Web Frontend",
@@ -37,30 +37,21 @@ const skills = [
 ]
 ---
 
-<div class="h-screen flex items-center justify-center">
-  <div class="w-9/12 h-4/6">
-    <h2 class="text-2xl 2xl:text-4xl font-bold">Skills</h2>
-    <div class="grid grid-cols-4 gap-12">
-
-      {skills.map((skill) => (
-        <div class="relative py-12 w-full h-64">
-          <div class="z-20 absolute w-full h-64 bg-[#D8EEFE] rounded-[0.5rem] p-4 space-y-4">
-            <h3 class="text-xl font-bold">{skill.title}</h3>
-            <ul>
-              {skill.items.map((item) => (
-                <li class="flex items-center space-x-2">
-                  <Icon name="good" class="w-4 h-4 text-[#3da9fc]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div
-            class="z-10 absolute w-full h-64 mt-4 ml-4 bg-[#3da9fc] rounded-[0.5rem]"
-          >
-          </div>
-        </div>
-      ))}
-    </div>
+<div class="h-fit lg:h-screen w-full lg:w-9/12 mx-auto flex flex-col justify-center py-6">
+  <h2 class="text-3xl lg:text-4xl font-bold px-4 lg:px-0">Skills</h2>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-12 py-6 px-4 lg:px-0">
+    {skills.map((skill) => (
+      <div class="w-full h-48 lg:h-64 bg-[#D8EEFE] rounded-[0.5rem] p-4 lg:p-6 space-y-2 lg:space-y-4 shadow-[6px_6px_0] lg:shadow-[20px_20px_0] shadow-[#3DA9FC] lg:shadow-[#3DA9FC]">
+        <h3 class="text-xl font-bold">{skill.title}</h3>
+        <ul class="text-sm lg:text-base">
+          {skill.items.map((item) => (
+            <li class="flex items-center space-x-2">
+              <Icon name="good" class="w-4 h-4 text-[#3da9fc]" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
   </div>
 </div>
