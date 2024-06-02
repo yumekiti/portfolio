@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import iconImage from "../../assets/icon.png";
+import LinkWithIcon from "../atoms/LinkWithIcon.astro";
 ---
 
 <div class="min-h-screen lg:h-screen w-full lg:w-9/12 mx-auto flex flex-col justify-center py-6">
@@ -9,13 +10,26 @@ import iconImage from "../../assets/icon.png";
   <div class="grid grid-cols-1 lg:grid-cols-2 py-6 px-4 lg:px-0">
     <ul class="space-y-4 flex flex-col justify-center order-last lg:order-first">
       <li>
-        <h2 class="text-xl lg:text-2xl text-[#3DA9FC] font-bold">Email</h2>
-        <p class="text-2xl lg:text-4xl">yumekiti@hoge.hoge</p>
+        <h2 class="text-xl lg:text-2xl text-[#3DA9FC] font-bold">ひとこと</h2>
+        <p class="text-2xl lg:text-4xl">便利を届ける活動をしています。</p>
       </li>
-      <li class="flex space-x-2">
-        <div class="h-12 w-12 rounded-full bg-[#330000]"></div>
-        <div class="h-12 w-12 rounded-full bg-[#330000]"></div>
-        <div class="h-12 w-12 rounded-full bg-[#330000]"></div>
+      <li>
+        <ul class="flex space-x-4">
+          <li>
+            <LinkWithIcon
+              href="https://github.com/yumekiti"
+              icon="github-logo"
+              target="_blank"
+            />
+          </li>
+          <li>
+            <LinkWithIcon
+              href="https://twitter.com/yumekiti1204"
+              icon="twitter-logo"
+              target="_blank"
+            />
+          </li>
+        </ul>
       </li>
     </ul>
     <div class="flex justify-center items-center py-16">

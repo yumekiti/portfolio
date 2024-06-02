@@ -4,27 +4,63 @@ import { Icon } from "astro-icon/components";
 const skills = [
   {
     title: "Programming Language",
-    items: ["JavaScript", "TypeScript", "Python", "Java", "PHP"],
+    items: [
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Go", icon: "go" },
+      { name: "Java", icon: "coffee" },
+      { name: "PHP", icon: "php" },
+      { name: "Python", icon: "python" },
+    ]
   },
   {
-    title: "Server",
-    items: ["Node.js", "Express", "Nginx", "Apache", "Tomcat"],
+    title: "Server & Network",
+    items: [
+      { name: "Terraform", icon: "terraform" },
+      { name: "Ansible", icon: "ansible" },
+      { name: "GNS3", icon: "network" },
+      { name: "Packet Tracer", icon: "network" },
+      { name: "Wireshark", icon: "wireshark" },
+    ]
   },
   {
     title: "Web Frontend",
-    items: ["React", "Vue", "Angular", "Svelte", "Next.js", "Gatsby"],
+    items: [
+      { name: "React", icon: "react" },
+      { name: "Vue.js", icon: "vuedotjs" },
+      { name: "Astro", icon: "astro" },
+      { name: "jQuery", icon: "jquery" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+    ]
   },
   {
     title: "Web Backend",
-    items: ["Express", "Koa", "NestJS", "Spring", "Django", "Flask"],
+    items: [
+      { name: "Express", icon: "express" },
+      { name: "NestJS", icon: "nestjs" },
+      { name: "Spring Boot", icon: "springboot" },
+      { name: "FastAPI", icon: "fastapi" },
+      { name: "Echo", icon: "go" },
+      { name: "Laravel", icon: "laravel" },
+    ]
   },
   {
     title: "Mobile & Desktop",
-    items: ["React Native", "Electron", "Flutter", "Swift", "Kotlin"],
+    items: [
+      { name: "React Native", icon: "react" },
+      { name: "Electron", icon: "electron" },
+      { name: "Capacitor", icon: "capacitor" },
+      { name: "Android Studio", icon: "androidstudio" },
+    ]
   },
   {
     title: "Other Tools",
-    items: ["Git", "Docker", "Kubernetes", "Jenkins", "Travis CI", "Circle CI"],
+    items: [
+      { name: "Docker", icon: "docker" },
+      { name: "Kubernetes", icon: "kubernetes" },
+      { name: "Jenkins", icon: "jenkins" },
+      { name: "Figma", icon: "figma" },
+      { name: "Markdown", icon: "markdown" },
+    ]
   },
 ]
 ---
@@ -38,8 +74,8 @@ const skills = [
         <ul class="text-base lg:text-lg">
           {skill.items.map((item) => (
             <li class="flex items-center space-x-2">
-              <Icon name="good" class="w-4 h-4 text-[#3da9fc]" />
-              <span>{item}</span>
+              <Icon name={`skills/${item.icon}`} class="w-4 h-4 text-[#3da9fc]" />
+              <span>{item.name}</span>
             </li>
           ))}
         </ul>

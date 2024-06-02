@@ -4,12 +4,13 @@ import { Icon } from "astro-icon/components";
 interface Props {
   href: string;
   icon: string;
+  target: string;
 }
 
-const { href, icon } = Astro.props;
+const { href, icon, target } = Astro.props;
 ---
 
-<a href={href} class="inline-block"
+<a href={href} class="inline-block" target={target}
   ><Icon
     name={icon}
     class="w-12 h-12 ring-[#3da9fc] ring-offset-4 rounded-md hover:ring-4"
