@@ -1,40 +1,66 @@
 ---
-import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import iconImage from "../../assets/icon.png";
 ---
+<section
+  class="h-screen w-full mx-auto flex flex-col justify-center px-4 sm:px-6"
+  aria-label="Hero"
+>
+  <div
+    class="mx-auto w-full max-w-[1200px] text-center space-y-5 sm:space-y-6 pt-[max(8px,env(safe-area-inset-top))] pb-[max(8px,env(safe-area-inset-bottom))]"
+  >
+    <h1 class="font-extrabold tracking-tight leading-tight [text-wrap:balance]">
+      <span class="block text-4xl sm:text-5xl lg:text-6xl">
+        Design the
+        <span class="underline decoration-2 sm:decoration-4 decoration-[#3DA9FC]">Convenience</span>.
+      </span>
+      <span class="block mt-2 text-lg sm:text-2xl lg:text-3xl">
+        「便利」を、設計で届ける。
+      </span>
+    </h1>
 
-<div class="h-screen w-full mx-auto flex flex-col justify-center">
-  <div class="h-full grid grid-cols-1 xl:grid-cols-2">
-    <div class="flex justify-center items-center">
-      <Icon name="earth" class="w-[80%] xl:w-[50%] h-[60%] xl:h-[50%] absolute" />
-      <div class="absolute text-4xl lg:text-6xl leading-[3rem] lg:leading-[6rem] font-bold">
-        <span>
-          「届け」便利<br />
-          生活に豊かさを
-        </span>
-        <Icon
-          name="good"
-          class="text-4xl lg:text-6xl animate-bounce absolute -top-8 lg:-top-11 -right-4 lg:-right-6"
-        />
-        <div
-          class="border-b-4 border-l-4 border-[#3da9fc] w-8 lg:w-12 h-8 lg:h-12 rotate-12 absolute -top-4 right-0"
-        />
-      </div>
-    </div>
-    <div class="hidden xl:flex justify-end items-end mb-24 w-full">
-      <div
-        class="rounded-l-[3rem] bg-[#D8EEFE] px-16 py-8 space-y-8 shadow-[20px_20px_0] shadow-[#3DA9FC]"
+    <p
+      class="text-[#38434F] mx-auto max-w-[48ch] sm:max-w-3xl leading-relaxed [text-wrap:balance] text-base sm:text-lg"
+    >
+      Clear words. Clear paths. Clear system.<br class="hidden sm:block" />
+      わかる × 速い × 壊れない = 生活が軽くなる。
+    </p>
+
+    <div
+      class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base"
+    >
+      <span
+        class="px-3 sm:px-4 py-2 sm:py-2.5 min-h-[40px] rounded-full border border-[#3DA9FC] leading-none flex items-center"
+        >Information Architecture</span
       >
-        <div class="flex items-center space-x-4">
-          <Image src={iconImage} alt="icon" class="w-36 h-36 rounded-full" />
-          <span class="text-7xl break-keep">ゆめきち</span>
+      <span
+        class="px-3 sm:px-4 py-2 sm:py-2.5 min-h-[40px] rounded-full border border-[#3DA9FC] leading-none flex items-center"
+        >Performance</span
+      >
+    </div>
+
+    <div class="pt-4 sm:pt-6 flex justify-center">
+      <div
+        class="w-full max-w-[560px] rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#3DA9FC] bg-white px-4 sm:px-6 py-4 sm:py-5 shadow-[6px_6px_0_0_#3DA9FC] sm:shadow-[10px_10px_0_0_#3DA9FC]"
+        role="note"
+      >
+        <div class="flex gap-3 sm:gap-4 items-center text-left">
+          <Image
+            src={iconImage}
+            alt="yumekichiのアイコン"
+            class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover ring-2 sm:ring-4 ring-[#D8EEFE]"
+          />
+          <div class="flex-1">
+            <p class="font-bold leading-tight text-base sm:text-lg">yumekiti</p>
+            <p class="text-[#5F6C7B] text-xs sm:text-sm -mt-0.5">
+              Infra × Web Experience
+            </p>
+            <p class="text-[#38434F] text-xs sm:text-sm mt-2">
+              Make it simple. Make it convenient.
+            </p>
+          </div>
         </div>
-        <p class="text-4xl break-keep">インフラエンジニア</p>
-        <p class="text-[#5F6C7B]">
-          インターネットを通じて便利を届け、生活に豊かさをお届けします。
-        </p>
       </div>
     </div>
-</div>
-</div>
+  </div>
+</section>

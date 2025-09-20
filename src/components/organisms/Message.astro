@@ -2,20 +2,32 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="h-screen w-full lg:w-9/12 mx-auto flex flex-col justify-center bg-[#D8EEFE] lg:bg-transparent">
+<section
+  class="h-screen w-full lg:w-9/12 mx-auto flex flex-col justify-center px-0 lg:px-6"
+  aria-labelledby="message-title"
+>
   <div
-    class="h-full lg:h-4/6 w-full rounded-none lg:rounded-[3rem] bg-[#D8EEFE] px-8 lg:px-16 py-10 shadow-none lg:shadow-[30px_30px_0] lg:shadow-[#3DA9FC] flex flex-col items-center justify-around"
+    class="h-full lg:h-4/6 w-full rounded-none lg:rounded-[3rem] bg-[#D8EEFE] px-6 sm:px-8 lg:px-16 py-6 lg:py-8 shadow-none lg:shadow-[30px_30px_0] lg:shadow-[#3DA9FC] flex flex-col justify-evenly"
   >
-    <h2 class="text-2xl 2xl:text-4xl font-bold text-center">
-      言葉に込めた思い
-    </h2>
-    <p class="leading-[2.2rem] 2xl:leading-[3rem] text-xl 2xl:text-2xl">
-      「届け」便利、生活に豊かさを。この言葉には、私が目指す方向性が込められています。
-      私は人々の生活をより豊かにすることを目指しており、私が提供するサービスやソリューションで、便利さを感じてもらい、生活に貢献できるよう取り組んでいます。
-      便利さと生活の豊かさを追求し、それをネットワーク技術を通じて実現することに力を注いでおり、技術の進歩を通じて、人々の生活をより良いものにし、社会に貢献することが私の目標です。
-    </p>
+    <header class="text-center">
+      <h2 id="message-title" class="font-bold text-1xl sm:text-2xl 2xl:text-3xl">
+        「便利」を、迷わないかたちに。
+      </h2>
+    </header>
+
+    <figure class="mx-auto">
+      <blockquote class="leading-relaxed text-base sm:text-lg 2xl:text-xl [text-pretty:balance]">
+        速くて、分かりやすくて、壊れない。<br/>
+        目的までの遠回りをなくす設計で、
+        <br class="sm:hidden block" />
+        毎日の手間を減らします。<br/>
+        それが、私の届けたい「便利」です。
+      </blockquote>
+      <figcaption class="mt-4 text-sm text-[#38434F]">Make it convenient, always.</figcaption>
+    </figure>
+
     <div class="flex justify-end w-full">
-      <Icon name="send" class="w-44 2xl:w-64 h-full" />
+      <Icon name="send" class="w-28 sm:w-36 lg:w-44 2xl:w-64 h-auto" />
     </div>
   </div>
-</div>
+</section>
