@@ -1,66 +1,106 @@
 ---
 import { Image } from "astro:assets";
 import iconImage from "../../assets/icon.png";
+import { Icon } from "astro-icon/components";
+
+const tags = [
+  "Information Architecture",
+  "Performance",
+];
+
+const socials = [
+  {
+    href: "/",
+    label: "Blog",
+    icon: "pencil-simple-line",
+    target: "_self",
+  },
+  {
+    href: "https://github.com/yumekiti",
+    label: "GitHub",
+    icon: "github-logo",
+    target: "_blank",
+  },
+  {
+    href: "https://twitter.com/yumekiti1204",
+    label: "X (Twitter)",
+    icon: "twitter-logo",
+    target: "_blank",
+  },
+];
 ---
+
 <section
-  class="h-screen w-full mx-auto flex flex-col justify-center px-4 sm:px-6"
   aria-label="Hero"
+  class="min-h-screen w-full mx-auto flex flex-col justify-evenly px-4 sm:px-6 pt-[max(8px,env(safe-area-inset-top))] pb-[max(8px,env(safe-area-inset-bottom))]"
 >
-  <div
-    class="mx-auto w-full max-w-[1200px] text-center space-y-5 sm:space-y-6 pt-[max(8px,env(safe-area-inset-top))] pb-[max(8px,env(safe-area-inset-bottom))]"
-  >
+  <!-- 上段：タイトル & リード & タグ -->
+  <div class="mx-auto w-full max-w-[1200px] text-center space-y-4 sm:space-y-6">
     <h1 class="font-extrabold tracking-tight leading-tight [text-wrap:balance]">
-      <span class="block text-4xl sm:text-5xl lg:text-6xl">
+      <span class="block text-[clamp(28px,6vw,64px)]">
         Design the
         <span class="underline decoration-2 sm:decoration-4 decoration-[#3DA9FC]">Convenience</span>.
       </span>
-      <span class="block mt-2 text-lg sm:text-2xl lg:text-3xl">
-        「便利」を、設計で届ける。
-      </span>
+      <span class="block mt-2 text-lg sm:text-2xl lg:text-3xl">「便利」を、設計で届ける。</span>
     </h1>
 
-    <p
-      class="text-[#38434F] mx-auto max-w-[48ch] sm:max-w-3xl leading-relaxed [text-wrap:balance] text-base sm:text-lg"
-    >
+    <p class="text-[#38434F] mx-auto max-w-[48ch] sm:max-w-3xl leading-relaxed [text-wrap:balance] text-base sm:text-lg">
       Clear words. Clear paths. Clear system.<br class="hidden sm:block" />
       わかる × 速い × 壊れない = 生活が軽くなる。
     </p>
 
-    <div
-      class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base"
-    >
-      <span
-        class="px-3 sm:px-4 py-2 sm:py-2.5 min-h-[40px] rounded-full border border-[#3DA9FC] leading-none flex items-center"
-        >Information Architecture</span
-      >
-      <span
-        class="px-3 sm:px-4 py-2 sm:py-2.5 min-h-[40px] rounded-full border border-[#3DA9FC] leading-none flex items-center"
-        >Performance</span
-      >
+    <!-- タグ（配列からレンダリング） -->
+    <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base">
+      {tags.map((t) => (
+        <span
+          class="px-3 sm:px-4 py-2 sm:py-2.5 min-h-[40px] rounded-full border border-[#3DA9FC] leading-none flex items-center"
+        >
+          {t}
+        </span>
+      ))}
     </div>
+  </div>
 
-    <div class="pt-4 sm:pt-6 flex justify-center">
+  <!-- 下段：カード & SNS -->
+  <div class="mx-auto w-full max-w-[1200px] space-y-4 sm:space-y-6">
+    <!-- カード -->
+    <div class="pt-2 sm:pt-4 flex justify-center">
       <div
-        class="w-full max-w-[560px] rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#3DA9FC] bg-white px-4 sm:px-6 py-4 sm:py-5 shadow-[6px_6px_0_0_#3DA9FC] sm:shadow-[10px_10px_0_0_#3DA9FC]"
         role="note"
+        class="w-full max-w-[560px] rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-[#3DA9FC] bg-white px-4 sm:px-6 py-4 sm:py-5 shadow-[6px_6px_0_0_#3DA9FC] sm:shadow-[10px_10px_0_0_#3DA9FC]"
       >
         <div class="flex gap-3 sm:gap-4 items-center text-left">
           <Image
             src={iconImage}
-            alt="yumekichiのアイコン"
+            alt="yumekitiのアイコン"
             class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover ring-2 sm:ring-4 ring-[#D8EEFE]"
           />
           <div class="flex-1">
             <p class="font-bold leading-tight text-base sm:text-lg">yumekiti</p>
-            <p class="text-[#5F6C7B] text-xs sm:text-sm -mt-0.5">
-              Infra × Web Experience
-            </p>
-            <p class="text-[#38434F] text-xs sm:text-sm mt-2">
-              Make it simple. Make it convenient.
-            </p>
+            <p class="text-[#5F6C7B] text-xs sm:text-sm -mt-0.5">Infra × Web Experience</p>
+            <p class="text-[#38434F] text-xs sm:text-sm mt-2">Make it simple. Make it convenient.</p>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- SNS（配列からレンダリング / astro-icon 使用） -->
+    <div class="flex justify-center gap-6 pt-1 sm:pt-2" aria-label="Social links">
+      {socials.map((s) => (
+        <a
+          href={s.href}
+          target={s.target}
+          rel={s.target === "_blank" ? "noopener" : undefined}
+          class="group inline-flex items-center justify-center text-[#3DA9FC] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3DA9FC]/60"
+          aria-label={s.label}
+        >
+          <span class="sr-only">{s.label}</span>
+          <Icon
+            name={s.icon}
+            class="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-150 group-hover:opacity-90 group-active:scale-95"
+          />
+        </a>
+      ))}
     </div>
   </div>
 </section>
