@@ -3,7 +3,7 @@
 PROMPT=$(cat <<'EOF'
 あなたはシニアエンジニアとしてレビュー観点でコミットメッセージを作成してください。
 
-以下の変更内容から「変更の意図」を要約し、最も適切なConventional Commits形式のメッセージを1行で出力してください。
+以下の変更内容から「変更の意図」を要約し、最も適切なConventional Commits形式のメッセージを1行でコードブロックに出力してください。
 
 ルール:
 - typeは適切に選ぶ（feat, fix, chore, refactor, docs, style, test など）
