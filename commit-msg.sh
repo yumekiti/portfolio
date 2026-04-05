@@ -16,8 +16,14 @@ PROMPT=$(cat <<'EOF'
 EOF
 )
 
+# ステージされた差分を取得
 DIFF=$(git --no-pager diff --cached)
 
-echo -e "$PROMPT\n$DIFF" | pbcopy
+# macOSでPromptと差分をクリップボードにコピー（pbcopy）
+# echo -e "$PROMPT\n$DIFF" | pbcopy
 
-echo "✅ Prompt + diff copied to clipboard"
+# Windowsでも標準出力で確認できるように echo で表示
+echo "$PROMPT"
+echo "$DIFF"
+
+echo "✅ Prompt + diff displayed above (copy manually if needed)"
