@@ -16,7 +16,7 @@ PROMPT=$(cat <<'EOF'
 EOF
 )
 
-DIFF=$(git --no-pager diff)
+DIFF=$(git --no-pager diff --cached)
 
 echo -e "$PROMPT\n$DIFF" | pbcopy
 
