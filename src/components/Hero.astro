@@ -1,24 +1,120 @@
 <section
-  class="flex min-h-screen flex-col justify-center bg-gradient-to-br from-[#D8EEFE] to-white px-4 sm:px-6 md:px-10 lg:px-20"
+  class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-white px-6 sm:px-8 md:px-16 lg:px-24"
 >
-  <div class="mx-auto w-full sm:w-11/12 lg:w-9/12">
-    <h1 class="text-4xl leading-tight font-bold sm:text-5xl md:text-6xl">
+  <!-- キャンバス -->
+  <canvas
+    id="network-bg"
+    class="pointer-events-none absolute top-0 left-0 h-full w-full"></canvas>
+
+  <div
+    class="relative mx-auto w-full text-center sm:w-11/12 sm:text-left lg:w-9/12"
+  >
+    <h1
+      class="text-3xl leading-snug font-bold text-gray-900 sm:text-5xl md:text-6xl"
+    >
       Engineered Convenience.<br />
       Powered by Network.
     </h1>
-
     <p
-      class="mt-6 text-base leading-relaxed break-words whitespace-normal text-blue-500 sm:text-lg md:text-xl"
+      class="mt-6 max-w-prose text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl"
     >
-      ネットワーク技術で、<span class="block sm:inline"></span>
-      日常の当たり前を支える「便利」を設計する。
+      ネットワーク技術で日常の当たり前を支える「便利」を設計する。
     </p>
-
-    <!-- 丸アイコン -->
-    <div class="mt-8 flex justify-center gap-3 sm:justify-start">
-      <div class="h-3 w-3 rounded-full bg-blue-400 sm:h-4 sm:w-4"></div>
-      <div class="h-3 w-3 rounded-full bg-blue-300 sm:h-4 sm:w-4"></div>
-      <div class="h-3 w-3 rounded-full bg-blue-200 sm:h-4 sm:w-4"></div>
+    <div class="mt-10 flex justify-center gap-3 sm:justify-start">
+      <div class="h-3 w-3 rounded-full bg-gray-400"></div>
+      <div class="h-3 w-3 rounded-full bg-gray-300"></div>
+      <div class="h-3 w-3 rounded-full bg-gray-200"></div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  if (typeof window !== "undefined") {
+    const canvas = document.getElementById("network-bg");
+    const ctx = canvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+
+    // リサイズ対応
+    function resizeCanvas() {
+      canvas.width = canvas.clientWidth * dpr;
+      canvas.height = canvas.clientHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeCanvas();
+
+    // ポイント (比率)
+    const points = [];
+    const POINT_COUNT = 60; // 軽め固定
+
+    for (let i = 0; i < POINT_COUNT; i++) {
+      points.push({
+        rx: Math.random(),
+        ry: Math.random(),
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      });
+    }
+
+    // 線の距離
+    function getMaxDist() {
+      const w = canvas.clientWidth;
+      if (w < 640) return 70;
+      if (w < 1024) return 100;
+      return 140;
+    }
+
+    function animate() {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // 実座標描画
+      points.forEach((p) => {
+        p.x = p.rx * w;
+        p.y = p.ry * h;
+        ctx.fillStyle = "rgba(100,100,255,0.5)";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      const maxDist = getMaxDist();
+
+      // 線を引く
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const dx = points[i].x - points[j].x;
+          const dy = points[i].y - points[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < maxDist) {
+            ctx.strokeStyle = `rgba(100,100,255,${1 - dist / maxDist})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(points[i].x, points[i].y);
+            ctx.lineTo(points[j].x, points[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // 移動
+      points.forEach((p) => {
+        p.rx += p.vx / w;
+        p.ry += p.vy / h;
+        if (p.rx < 0 || p.rx > 1) p.vx *= -1;
+        if (p.ry < 0 || p.ry > 1) p.vy *= -1;
+      });
+
+      window.requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      // ※再生成しない → チカチカなし
+    });
+  }
+</script>
