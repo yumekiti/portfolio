@@ -20,10 +20,10 @@ EOF
 DIFF=$(git --no-pager diff --cached)
 
 # macOSでPromptと差分をクリップボードにコピー（pbcopy）
-# echo -e "$PROMPT\n$DIFF" | pbcopy
+echo -e "$PROMPT\n$DIFF" | pbcopy
 
 # Windowsでも標準出力で確認できるように echo で表示
-echo "$PROMPT"
-echo "$DIFF"
+# echo "$PROMPT"
+# echo "$DIFF"
 
 echo "✅ Prompt + diff displayed above (copy manually if needed)"

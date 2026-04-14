@@ -1,23 +1,49 @@
+<!-- ================================================================
+  WORKS SECTION
+================================================================ -->
 <section
   id="works"
-  class="flex min-h-screen items-center bg-[#D8EEFE] px-4 sm:px-6 md:px-10 lg:px-20"
+  class="flex min-h-screen items-center bg-[#D8EEFE]"
 >
-  <div class="mx-auto w-full sm:w-11/12 lg:w-9/12">
-    <h2 class="mb-8 text-2xl font-bold sm:mb-10 sm:text-3xl">$ ls projects</h2>
-
-    <div class="space-y-4 sm:space-y-6">
-      <div class="rounded-lg border p-4 transition hover:shadow-md sm:p-6">
-        <p class="font-mono text-sm sm:text-base">network.yaml</p>
-        <p class="mt-1 text-xs text-slate-600 sm:text-sm">
-          BGP冗長構成 / 高可用性設計
+  <div class="mx-auto w-full max-w-screen-lg px-10">
+    <!-- セクションラベル -->
+    <p class="mb-5 font-mono text-[11px] font-medium tracking-[0.25em] text-[#5d8fae]">
+      WORKS
+    </p>
+ 
+    <h2 class="mb-14 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-tight text-slate-900">
+      $ ls projects
+    </h2>
+ 
+    <div class="grid gap-4 sm:grid-cols-2">
+      <!-- network.yaml -->
+      <div
+        class="group rounded-xl border border-slate-900/10 bg-white/60 p-7 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(15,23,42,0.10)]"
+      >
+        <p class="font-mono text-sm font-semibold text-slate-900">network.yaml</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          BGP冗長構成・高可用性設計。マルチホーミングによる経路制御と冗長化を実装。
         </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded bg-slate-900/6 px-2 py-1 font-mono text-[11px] text-slate-500">BGP</span>
+          <span class="rounded bg-slate-900/6 px-2 py-1 font-mono text-[11px] text-slate-500">HA Design</span>
+          <span class="rounded bg-slate-900/6 px-2 py-1 font-mono text-[11px] text-slate-500">Cisco</span>
+        </div>
       </div>
-
-      <div class="rounded-lg border p-4 transition hover:shadow-md sm:p-6">
-        <p class="font-mono text-sm sm:text-base">k8s.tf</p>
-        <p class="mt-1 text-xs text-slate-600 sm:text-sm">
-          Kubernetesクラスタ構築 / CNI設計
+ 
+      <!-- k8s.tf -->
+      <div
+        class="group rounded-xl border border-slate-900/10 bg-white/60 p-7 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(15,23,42,0.10)]"
+      >
+        <p class="font-mono text-sm font-semibold text-slate-900">k8s.tf</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          Kubernetesクラスタ構築・CNI設計。TerraformによるIaC化とCalicoの導入。
         </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded bg-slate-900/6 px-2 py-1 font-mono text-[11px] text-slate-500">Kubernetes</span>
+          <span class="rounded bg-slate-900/6 px-2 py-1 font-mono text-[11px] text-slate-500">Terraform</span>
+          <span class="rounded bg-slate-900/6 px-2 py-1 font-mono text-[11px] text-slate-500">CNI</span>
+        </div>
       </div>
     </div>
   </div>

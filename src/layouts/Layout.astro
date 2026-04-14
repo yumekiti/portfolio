@@ -1,28 +1,39 @@
 ---
 import "../styles/global.css";
 ---
-
+ 
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-
-    <title>Yumeki Iida | Network Engineer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+    <title>yumekiti | Network Engineer Portfolio</title>
     <meta
       name="description"
       content="ネットワーク技術で日常の当たり前を支える便利を設計するエンジニアのポートフォリオ。"
     />
     <meta name="robots" content="index, follow" />
-
-    <meta property="og:title" content="Yumeki Iida | Portfolio" />
+ 
+    <meta property="og:title" content="yumekiti | Portfolio" />
     <meta property="og:description" content="Network Engineer Portfolio" />
     <meta property="og:type" content="website" />
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
+ 
   <body class="bg-white text-slate-900">
     <!-- SEO用ヘッダー（非表示） -->
     <header class="sr-only">
-      <h1>Yumeki Iida Portfolio</h1>
+      <h1>yumekiti Portfolio</h1>
       <nav aria-label="Main navigation">
         <ul>
           <li><a href="#concept">Concept</a></li>
@@ -32,7 +43,7 @@ import "../styles/global.css";
         </ul>
       </nav>
     </header>
-
+ 
     <!-- 左ナビ（UI用） -->
     <nav
       aria-label="Section navigation"
@@ -43,54 +54,54 @@ import "../styles/global.css";
         class="group relative flex items-center"
         aria-label="Concept section"
       >
-        <div class="h-3 w-3 rounded-full bg-blue-300 opacity-40"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-blue-300 opacity-40 transition-all group-hover:opacity-100 group-hover:scale-110"></div>
         <span
-          class="absolute left-6 text-sm text-slate-500 opacity-0 transition group-hover:opacity-100"
+          class="absolute left-5 text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap"
         >
           Concept
         </span>
       </a>
-
+ 
       <a
         href="#skills"
         class="group relative flex items-center"
         aria-label="Skills section"
       >
-        <div class="h-3 w-3 rounded-full bg-blue-300 opacity-40"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-blue-300 opacity-40 transition-all group-hover:opacity-100 group-hover:scale-110"></div>
         <span
-          class="absolute left-6 text-sm text-slate-500 opacity-0 transition group-hover:opacity-100"
+          class="absolute left-5 text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap"
         >
           Skills
         </span>
       </a>
-
+ 
       <a
         href="#works"
         class="group relative flex items-center"
         aria-label="Works section"
       >
-        <div class="h-3 w-3 rounded-full bg-blue-300 opacity-40"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-blue-300 opacity-40 transition-all group-hover:opacity-100 group-hover:scale-110"></div>
         <span
-          class="absolute left-6 text-sm text-slate-500 opacity-0 transition group-hover:opacity-100"
+          class="absolute left-5 text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap"
         >
           Works
         </span>
       </a>
-
+ 
       <a
         href="#about"
         class="group relative flex items-center"
         aria-label="About section"
       >
-        <div class="h-3 w-3 rounded-full bg-blue-300 opacity-40"></div>
+        <div class="h-2.5 w-2.5 rounded-full bg-blue-300 opacity-40 transition-all group-hover:opacity-100 group-hover:scale-110"></div>
         <span
-          class="absolute left-6 text-sm text-slate-500 opacity-0 transition group-hover:opacity-100"
+          class="absolute left-5 text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap"
         >
           About
         </span>
       </a>
     </nav>
-
+ 
     <!-- メイン -->
     <main>
       <slot />
