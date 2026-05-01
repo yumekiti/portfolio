@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yumekiti | Network Engineer Portfolio</title>
+    <meta
+      name="description"
+      content="ネットワーク技術で日常の当たり前を支える便利を設計するエンジニアのポートフォリオ。"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="yumekiti | Portfolio" />
+    <meta property="og:description" content="Network Engineer Portfolio" />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", "Noto Sans JP", sans-serif;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal-d1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-d2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-d3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-d4 {
+        transition-delay: 0.4s;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-slate-900 antialiased">
+    <!-- SEO用ヘッダー（非表示） -->
+    <header class="sr-only">
+      <h1>yumekiti Portfolio</h1>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#concept">Concept</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 左ナビ -->
+    <nav
+      id="side-nav"
+      aria-label="Section navigation"
+      class="fixed top-1/2 left-5 z-50 hidden -translate-y-1/2 flex-col gap-5 lg:flex"
+    >
+      <a
+        href="#concept"
+        class="group flex items-center gap-3"
+        aria-label="Concept section"
+      >
+        <div
+          class="nav-dot h-[5px] w-[5px] rounded-full bg-slate-300 transition-all duration-300 group-hover:scale-150 group-hover:bg-blue-500"
+        ></div>
+        <span
+          class="text-[10px] font-medium tracking-wide whitespace-nowrap text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
+          >Concept</span
+        >
+      </a>
+      <a
+        href="#skills"
+        class="group flex items-center gap-3"
+        aria-label="Skills section"
+      >
+        <div
+          class="nav-dot h-[5px] w-[5px] rounded-full bg-slate-300 transition-all duration-300 group-hover:scale-150 group-hover:bg-blue-500"
+        ></div>
+        <span
+          class="text-[10px] font-medium tracking-wide whitespace-nowrap text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
+          >Skills</span
+        >
+      </a>
+      <a
+        href="#works"
+        class="group flex items-center gap-3"
+        aria-label="Works section"
+      >
+        <div
+          class="nav-dot h-[5px] w-[5px] rounded-full bg-slate-300 transition-all duration-300 group-hover:scale-150 group-hover:bg-blue-500"
+        ></div>
+        <span
+          class="text-[10px] font-medium tracking-wide whitespace-nowrap text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
+          >Works</span
+        >
+      </a>
+      <a
+        href="#about"
+        class="group flex items-center gap-3"
+        aria-label="About section"
+      >
+        <div
+          class="nav-dot h-[5px] w-[5px] rounded-full bg-slate-300 transition-all duration-300 group-hover:scale-150 group-hover:bg-blue-500"
+        ></div>
+        <span
+          class="text-[10px] font-medium tracking-wide whitespace-nowrap text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
+          >About</span
+        >
+      </a>
+    </nav>
+
+    <main>
+      <!-- ================================================================
+        01 / HERO
+      ================================================================ -->
+      <section
+        id="concept"
+        class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-white"
+      >
+        <!-- グリッド背景 -->
+        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:80px_80px]"
+          ></div>
+        </div>
+        <!-- 右上グロー -->
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_75%_20%,rgba(219,234,254,0.65),transparent)]"
+          aria-hidden="true"
+        ></div>
+        <!-- ネットワークキャンバス -->
+        <canvas
+          id="network-bg"
+          class="pointer-events-none absolute inset-0 h-full w-full opacity-60"
+          aria-hidden="true"
+        ></canvas>
+        <!-- 背景セクション番号 -->
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute right-5 bottom-3 font-['Inter'] text-[clamp(5rem,15vw,13rem)] leading-none font-black text-slate-900/[0.04] select-none"
+          >01</span
+        >
+
+        <!-- ロゴ -->
+        <div class="absolute top-8 left-5 z-20 sm:left-8 xl:left-12">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-100 text-[11px] font-bold tracking-wide text-blue-700"
+            >
+              YI
+            </div>
+            <div class="flex flex-col leading-snug">
+              <span class="text-sm font-semibold tracking-tight text-slate-900"
+                >Yumeki Iida</span
+              >
+              <span
+                class="font-['DM_Mono'] text-[10px] tracking-widest text-slate-400 uppercase"
+                >Network Engineer</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- メインコピー -->
+        <div
+          class="relative z-10 mx-auto w-full max-w-screen-xl px-5 sm:px-8 xl:px-12"
+        >
+          <p class="mb-7 flex items-center gap-2.5">
+            <span class="h-px w-8 bg-slate-900/20"></span>
+            <span
+              class="font-['DM_Mono'] text-[11px] tracking-[0.3em] text-slate-400 uppercase"
+              >Portfolio</span
+            >
+          </p>
+          <h1
+            class="font-['Inter'] text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.0] font-extrabold tracking-[-0.045em] text-slate-900"
+          >
+            Engineered Convenience.<br />
+            <span class="text-blue-500">Powered by Network.</span>
+          </h1>
+          <p
+            class="mt-8 max-w-[400px] text-[clamp(0.875rem,1.4vw,1rem)] leading-[1.9] text-slate-500"
+          >
+            ネットワーク技術で日常の当たり前を支える、
+            <span class="font-semibold text-slate-700">「便利」</span
+            >を設計する。
+          </p>
+        </div>
+
+        <!-- SNS バー -->
+        <div class="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
+          <div
+            class="flex items-center gap-px rounded-full border border-slate-900/[0.07] bg-white/90 px-1.5 py-1.5 shadow-[0_4px_20px_rgba(15,23,42,0.07)] backdrop-blur-xl"
+          >
+            <a
+              href="#"
+              aria-label="X"
+              class="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-all hover:-translate-y-px hover:bg-blue-50 hover:text-blue-600"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5 fill-current"
+                aria-hidden="true"
+              >
+                <path
+                  d="M18.9 2H22l-6.8 7.8L23.2 22h-6.9l-5.4-7.1L4.6 22H1.5l7.3-8.4L.8 2h7l4.9 6.4L18.9 2Z"
+                />
+              </svg>
+            </a>
+            <div class="mx-0.5 h-4 w-px bg-slate-200"></div>
+            <a
+              href="https://github.com/yumekiti"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              class="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-all hover:-translate-y-px hover:bg-blue-50 hover:text-blue-600"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5 fill-current"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12.1c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.5-1-1.5-.8-.6.1-.6.1-.6.9.1 1.4 1 1.4 1 .8 1.4 2.1 1 2.6.7.1-.6.3-1 .6-1.3-2.2-.3-4.5-1.1-4.5-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.8 0 0 .8-.2 2.8 1a9.6 9.6 0 0 1 5 0c2-.7 2.8-1 2.8-1 .6 1.5.2 2.5.1 2.8.6.7 1 1.6 1 2.7 0 3.9-2.3 4.6-4.5 5 .3.3.6.9.6 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 22 12.1C22 6.5 17.5 2 12 2Z"
+                />
+              </svg>
+            </a>
+            <div class="mx-0.5 h-4 w-px bg-slate-200"></div>
+            <a
+              href="#"
+              aria-label="Email"
+              class="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-all hover:-translate-y-px hover:bg-blue-50 hover:text-blue-600"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5 fill-none stroke-current"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+        02 / SKILLS
+      ================================================================ -->
+      <section
+        id="skills"
+        class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[#f8fafd]"
+      >
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+          aria-hidden="true"
+        ></div>
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute right-5 bottom-3 font-['Inter'] text-[clamp(5rem,15vw,13rem)] leading-none font-black text-slate-900/[0.04] select-none"
+          >02</span
+        >
+
+        <div
+          class="relative z-10 mx-auto w-full max-w-screen-xl px-5 py-20 sm:px-8 xl:px-12"
+        >
+          <div class="reveal mb-12">
+            <p
+              class="mb-2 font-['DM_Mono'] text-[11px] tracking-[0.3em] text-slate-400 uppercase"
+            >
+              Skills
+            </p>
+            <h2
+              class="font-['Inter'] text-[clamp(1.75rem,4vw,3rem)] font-extrabold tracking-[-0.04em] text-slate-900"
+            >
+              技術領域
+            </h2>
+            <p class="mt-3 max-w-lg leading-relaxed text-slate-500">
+              ネットワーク設計・構築から自動化・クラウドまで、インフラ全体を俯瞰した設計が得意です。
+            </p>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <div
+              class="reveal reveal-d1 group relative overflow-hidden rounded-2xl bg-white p-6 ring-1 ring-slate-900/[0.07] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(59,130,246,0.1)] hover:ring-blue-400/50"
+            >
+              <div
+                class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-300/0 via-blue-400 to-blue-300/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              ></div>
+              <p class="mb-2.5 font-['DM_Mono'] text-[10px] text-slate-300">
+                01 /
+              </p>
+              <h3 class="mb-4 text-sm font-semibold text-slate-900">
+                ネットワーク基盤
+              </h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >BGP</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >OSPF</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >IS-IS</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >VLAN / STP</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >MPLS</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >SD-WAN</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >QoS</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="reveal reveal-d2 group relative overflow-hidden rounded-2xl bg-white p-6 ring-1 ring-slate-900/[0.07] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(59,130,246,0.1)] hover:ring-blue-400/50"
+            >
+              <div
+                class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-300/0 via-blue-400 to-blue-300/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              ></div>
+              <p class="mb-2.5 font-['DM_Mono'] text-[10px] text-slate-300">
+                02 /
+              </p>
+              <h3 class="mb-4 text-sm font-semibold text-slate-900">
+                セキュリティ
+              </h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Firewall設計</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >IPsec VPN</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >SSL-VPN</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >IDS / IPS</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >ゼロトラスト</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >FortiGate</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="reveal reveal-d3 group relative overflow-hidden rounded-2xl bg-white p-6 ring-1 ring-slate-900/[0.07] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(59,130,246,0.1)] hover:ring-blue-400/50"
+            >
+              <div
+                class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-300/0 via-blue-400 to-blue-300/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              ></div>
+              <p class="mb-2.5 font-['DM_Mono'] text-[10px] text-slate-300">
+                03 /
+              </p>
+              <h3 class="mb-4 text-sm font-semibold text-slate-900">
+                クラウドネットワーク
+              </h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >AWS VPC</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Transit Gateway</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Azure VNet</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >ExpressRoute</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >GCP VPC</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >ハイブリッドクラウド</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="reveal reveal-d4 group relative overflow-hidden rounded-2xl bg-white p-6 ring-1 ring-slate-900/[0.07] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(59,130,246,0.1)] hover:ring-blue-400/50"
+            >
+              <div
+                class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-300/0 via-blue-400 to-blue-300/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              ></div>
+              <p class="mb-2.5 font-['DM_Mono'] text-[10px] text-slate-300">
+                04 /
+              </p>
+              <h3 class="mb-4 text-sm font-semibold text-slate-900">
+                自動化・運用
+              </h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Ansible</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Python</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Terraform</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Zabbix</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >Grafana</span
+                >
+                <span
+                  class="rounded-md bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 ring-1 ring-slate-100"
+                  >GitHub Actions</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+        03 / WORKS
+      ================================================================ -->
+      <section
+        id="works"
+        class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[#0a0f1e]"
+      >
+        <!-- 微細グリッド -->
+        <div
+          class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:80px_80px]"
+          aria-hidden="true"
+        ></div>
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute right-5 bottom-3 font-['Inter'] text-[clamp(5rem,15vw,13rem)] leading-none font-black text-white/[0.04] select-none"
+          >03</span
+        >
+
+        <div
+          class="relative z-10 mx-auto w-full max-w-screen-xl px-5 py-20 sm:px-8 xl:px-12"
+        >
+          <div class="reveal mb-14">
+            <p
+              class="mb-2 font-['DM_Mono'] text-[11px] tracking-[0.3em] text-slate-500 uppercase"
+            >
+              Works
+            </p>
+            <h2
+              class="font-['Inter'] text-[clamp(1.75rem,4vw,3rem)] font-extrabold tracking-[-0.04em] text-white"
+            >
+              プロジェクト
+            </h2>
+            <p class="mt-3 max-w-lg leading-relaxed text-slate-500">
+              設計・構築・自動化まで携わった主要なプロジェクトの一部です。
+            </p>
+          </div>
+
+          <div class="divide-y divide-white/[0.05]">
+            <div
+              class="reveal group -mx-4 rounded-xl px-4 py-9 transition-colors duration-200 hover:bg-white/[0.03] sm:-mx-6 sm:px-6"
+            >
+              <div
+                class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-10"
+              >
+                <span
+                  class="shrink-0 font-['DM_Mono'] text-[2.5rem] leading-none font-bold text-white/[0.08] transition-colors duration-300 select-none group-hover:text-blue-500/25 sm:mt-0.5"
+                  >01</span
+                >
+                <div class="flex-1">
+                  <div class="mb-3 flex items-start justify-between gap-4">
+                    <h3
+                      class="text-base font-bold tracking-tight text-white sm:text-lg"
+                    >
+                      エンタープライズ網 フルリプレース
+                    </h3>
+                    <span
+                      class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-white/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:border-blue-500/50 group-hover:text-blue-400"
+                    >
+                      <svg
+                        class="h-3 w-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <p class="mb-4 text-sm leading-relaxed text-slate-500">
+                    大規模企業ネットワークの全面刷新。BGP / OSPF
+                    による冗長ルーティング設計、VLAN
+                    分離によるセグメント設計、高可用性アーキテクチャを実現。
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >BGP</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >OSPF</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >VLAN</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >冗長設計</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="reveal group -mx-4 rounded-xl px-4 py-9 transition-colors duration-200 hover:bg-white/[0.03] sm:-mx-6 sm:px-6"
+            >
+              <div
+                class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-10"
+              >
+                <span
+                  class="shrink-0 font-['DM_Mono'] text-[2.5rem] leading-none font-bold text-white/[0.08] transition-colors duration-300 select-none group-hover:text-blue-500/25 sm:mt-0.5"
+                  >02</span
+                >
+                <div class="flex-1">
+                  <div class="mb-3 flex items-start justify-between gap-4">
+                    <h3
+                      class="text-base font-bold tracking-tight text-white sm:text-lg"
+                    >
+                      ネットワーク設定変更の自動化基盤
+                    </h3>
+                    <span
+                      class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-white/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:border-blue-500/50 group-hover:text-blue-400"
+                    >
+                      <svg
+                        class="h-3 w-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <p class="mb-4 text-sm leading-relaxed text-slate-500">
+                    Ansible + GitLab CI による Infrastructure as Code
+                    を実現。設定変更・検証をパイプライン化し、デプロイ時間を大幅短縮。ヒューマンエラーゼロを目指した運用設計。
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >Ansible</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >Python</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >GitLab CI</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >IaC</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="reveal group -mx-4 rounded-xl px-4 py-9 transition-colors duration-200 hover:bg-white/[0.03] sm:-mx-6 sm:px-6"
+            >
+              <div
+                class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-10"
+              >
+                <span
+                  class="shrink-0 font-['DM_Mono'] text-[2.5rem] leading-none font-bold text-white/[0.08] transition-colors duration-300 select-none group-hover:text-blue-500/25 sm:mt-0.5"
+                  >03</span
+                >
+                <div class="flex-1">
+                  <div class="mb-3 flex items-start justify-between gap-4">
+                    <h3
+                      class="text-base font-bold tracking-tight text-white sm:text-lg"
+                    >
+                      クラウド移行 ネットワーク設計
+                    </h3>
+                    <span
+                      class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-white/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:border-blue-500/50 group-hover:text-blue-400"
+                    >
+                      <svg
+                        class="h-3 w-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <p class="mb-4 text-sm leading-relaxed text-slate-500">
+                    オンプレミスから AWS / Azure
+                    へのマイグレーション設計。Transit Gateway と ExpressRoute
+                    を活用したマルチクラウド接続、セキュリティグループ・NACL
+                    の統制設計を担当。
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >AWS</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >Azure</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >Transit Gateway</span
+                    >
+                    <span
+                      class="rounded-full border border-white/[0.08] px-2.5 py-0.5 text-[11px] text-slate-400"
+                      >ExpressRoute</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+        04 / ABOUT
+      ================================================================ -->
+      <section
+        id="about"
+        class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-white"
+      >
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+          aria-hidden="true"
+        ></div>
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute right-5 bottom-3 font-['Inter'] text-[clamp(5rem,15vw,13rem)] leading-none font-black text-slate-900/[0.04] select-none"
+          >04</span
+        >
+
+        <div
+          class="relative z-10 mx-auto w-full max-w-screen-xl px-5 py-20 sm:px-8 xl:px-12"
+        >
+          <p
+            class="reveal mb-14 font-['DM_Mono'] text-[11px] tracking-[0.3em] text-slate-400 uppercase"
+          >
+            About
+          </p>
+
+          <div class="grid gap-14 lg:grid-cols-[220px_1fr]">
+            <!-- Left -->
+            <div class="reveal flex flex-col items-start gap-5">
+              <div
+                class="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-blue-100 text-xl font-bold tracking-tight text-blue-700"
+              >
+                YI
+              </div>
+              <div>
+                <p class="text-lg font-bold tracking-tight text-slate-900">
+                  Yumeki Iida
+                </p>
+                <p
+                  class="mt-0.5 font-['DM_Mono'] text-[10px] tracking-widest text-slate-400 uppercase"
+                >
+                  Network Engineer
+                </p>
+              </div>
+              <div class="flex gap-1.5">
+                <a
+                  href="https://github.com/yumekiti"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  class="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 ring-1 ring-slate-200 transition-all hover:bg-blue-50 hover:text-blue-500 hover:ring-blue-300"
+                >
+                  <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current">
+                    <path
+                      d="M12 2C6.5 2 2 6.5 2 12.1c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.5-1-1.5-.8-.6.1-.6.1-.6.9.1 1.4 1 1.4 1 .8 1.4 2.1 1 2.6.7.1-.6.3-1 .6-1.3-2.2-.3-4.5-1.1-4.5-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.8 0 0 .8-.2 2.8 1a9.6 9.6 0 0 1 5 0c2-.7 2.8-1 2.8-1 .6 1.5.2 2.5.1 2.8.6.7 1 1.6 1 2.7 0 3.9-2.3 4.6-4.5 5 .3.3.6.9.6 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 22 12.1C22 6.5 17.5 2 12 2Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="X"
+                  class="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 ring-1 ring-slate-200 transition-all hover:bg-blue-50 hover:text-blue-500 hover:ring-blue-300"
+                >
+                  <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-current">
+                    <path
+                      d="M18.9 2H22l-6.8 7.8L23.2 22h-6.9l-5.4-7.1L4.6 22H1.5l7.3-8.4L.8 2h7l4.9 6.4L18.9 2Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Email"
+                  class="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 ring-1 ring-slate-200 transition-all hover:bg-blue-50 hover:text-blue-500 hover:ring-blue-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-3.5 w-3.5 fill-none stroke-current"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right -->
+            <div class="flex flex-col gap-11">
+              <div class="reveal border-l-2 border-blue-100 pl-5">
+                <p
+                  class="text-[clamp(0.9rem,1.4vw,1rem)] leading-[2.1] text-slate-600"
+                >
+                  ネットワークエンジニアとして、企業インフラの設計・構築・運用に携わっています。<br />
+                  「ネットワークは縁の下の力持ち」という信念のもと、見えないところで当たり前を支える<br />
+                  堅牢なインフラ設計を追求しています。<br />
+                  近年はネットワーク自動化・クラウド化にも注力し、<br />
+                  運用コスト削減と信頼性向上の両立を目指しています。
+                </p>
+              </div>
+
+              <div class="reveal">
+                <p
+                  class="mb-6 font-['DM_Mono'] text-[11px] tracking-[0.3em] text-slate-400 uppercase"
+                >
+                  Career
+                </p>
+                <ol class="relative space-y-7 border-l border-slate-200 pl-7">
+                  <li class="relative">
+                    <span
+                      class="absolute top-[4px] -left-[5px] block h-2.5 w-2.5 rounded-full border-2 border-white bg-blue-400 ring-[3px] ring-blue-100"
+                    ></span>
+                    <time
+                      class="font-['DM_Mono'] text-[11px] tracking-wide text-blue-400"
+                      >2024 — Present</time
+                    >
+                    <h4 class="mt-1 text-sm font-bold text-slate-900">
+                      シニアネットワークエンジニア
+                    </h4>
+                    <p class="mt-0.5 text-xs leading-relaxed text-slate-500">
+                      大規模エンタープライズ向けネットワーク設計・自動化推進
+                    </p>
+                  </li>
+                  <li class="relative">
+                    <span
+                      class="absolute top-[4px] -left-[5px] block h-2.5 w-2.5 rounded-full border-2 border-white bg-slate-300"
+                    ></span>
+                    <time
+                      class="font-['DM_Mono'] text-[11px] tracking-wide text-slate-400"
+                      >2021 — 2024</time
+                    >
+                    <h4 class="mt-1 text-sm font-bold text-slate-900">
+                      ネットワークエンジニア
+                    </h4>
+                    <p class="mt-0.5 text-xs leading-relaxed text-slate-500">
+                      中規模企業のネットワーク設計・構築・運用保守
+                    </p>
+                  </li>
+                  <li class="relative">
+                    <span
+                      class="absolute top-[4px] -left-[5px] block h-2.5 w-2.5 rounded-full border-2 border-white bg-slate-300"
+                    ></span>
+                    <time
+                      class="font-['DM_Mono'] text-[11px] tracking-wide text-slate-400"
+                      >2019 — 2021</time
+                    >
+                    <h4 class="mt-1 text-sm font-bold text-slate-900">
+                      インフラエンジニア（新卒）
+                    </h4>
+                    <p class="mt-0.5 text-xs leading-relaxed text-slate-500">
+                      サーバー・ネットワーク構築、運用監視
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+        FOOTER
+      ================================================================ -->
+      <footer class="border-t border-white/[0.05] bg-[#0a0f1e] py-7">
+        <div
+          class="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-between gap-3 px-5 sm:flex-row sm:px-8 xl:px-12"
+        >
+          <div class="flex items-center gap-2.5">
+            <div
+              class="flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-[10px] font-bold text-blue-700"
+            >
+              YI
+            </div>
+            <span class="text-sm font-medium text-white/50">yumekiti</span>
+          </div>
+          <p class="font-['DM_Mono'] text-[11px] text-slate-700">
+            © 2026 Yumeki Iida. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ================================================================
+      SCRIPTS
+    ================================================================ -->
+    <script>
+      // Network canvas
+      (function () {
+        const canvas = document.getElementById("network-bg");
+        const ctx = canvas ? canvas.getContext("2d") : null;
+        if (!canvas || !ctx) return;
+        const dpr = window.devicePixelRatio || 1;
+        let animId;
+        const pts = [];
+        const N = 64;
+        function init() {
+          pts.length = 0;
+          for (let i = 0; i < N; i++) {
+            pts.push({
+              rx: Math.random(),
+              ry: Math.random(),
+              vx: (Math.random() - 0.5) * 0.12,
+              vy: (Math.random() - 0.5) * 0.12,
+              hub: Math.random() > 0.75,
+              x: 0,
+              y: 0,
+            });
+          }
+        }
+        function resize() {
+          const w = canvas.clientWidth,
+            h = canvas.clientHeight;
+          canvas.width = w * dpr;
+          canvas.height = h * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function maxD() {
+          const w = canvas.clientWidth;
+          return w < 640 ? 100 : w < 1024 ? 150 : 200;
+        }
+        function draw() {
+          const w = canvas.clientWidth,
+            h = canvas.clientHeight;
+          ctx.clearRect(0, 0, w, h);
+          pts.forEach((p) => {
+            p.x = p.rx * w;
+            p.y = p.ry * h;
+          });
+          const md = maxD();
+          for (let i = 0; i < pts.length; i++)
+            for (let j = i + 1; j < pts.length; j++) {
+              const dx = pts[i].x - pts[j].x,
+                dy = pts[i].y - pts[j].y,
+                d = Math.sqrt(dx * dx + dy * dy);
+              if (d < md) {
+                const hub = pts[i].hub || pts[j].hub;
+                let a = (1 - d / md) * 0.18;
+                if (hub) a *= 2.2;
+                ctx.strokeStyle = hub
+                  ? `rgba(91,155,213,${a})`
+                  : `rgba(15,23,42,${a})`;
+                ctx.lineWidth = hub ? (d < md * 0.4 ? 1.2 : 0.8) : 0.6;
+                ctx.beginPath();
+                ctx.moveTo(pts[i].x, pts[i].y);
+                ctx.lineTo(pts[j].x, pts[j].y);
+                ctx.stroke();
+              }
+            }
+          pts.forEach((p) => {
+            if (p.hub) {
+              ctx.fillStyle = "rgba(91,155,213,0.12)";
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, 9, 0, Math.PI * 2);
+              ctx.fill();
+            }
+            ctx.fillStyle = p.hub
+              ? "rgba(91,155,213,0.95)"
+              : "rgba(15,23,42,0.45)";
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.hub ? 3 : 1.6, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          pts.forEach((p) => {
+            p.rx += p.vx / w;
+            p.ry += p.vy / h;
+            if (p.rx < 0 || p.rx > 1) p.vx *= -1;
+            if (p.ry < 0 || p.ry > 1) p.vy *= -1;
+            p.rx = Math.min(1, Math.max(0, p.rx));
+            p.ry = Math.min(1, Math.max(0, p.ry));
+          });
+          animId = requestAnimationFrame(draw);
+        }
+        resize();
+        init();
+        draw();
+        window.addEventListener("resize", resize);
+        window.addEventListener("beforeunload", () => {
+          if (animId) cancelAnimationFrame(animId);
+        });
+      })();
+
+      // Scroll reveal
+      (function () {
+        const obs = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                obs.unobserve(e.target);
+              }
+            }),
+          { threshold: 0.08 },
+        );
+        document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      })();
+
+      // Active nav dot
+      (function () {
+        const links = document.querySelectorAll("#side-nav a");
+        const secs = document.querySelectorAll("section[id]");
+        const obs = new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              links.forEach((a) => {
+                const dot = a.querySelector(".nav-dot");
+                const active = a.getAttribute("href") === "#" + e.target.id;
+                dot.classList.toggle("bg-slate-300", !active);
+                dot.classList.toggle("bg-blue-500", active);
+                dot.classList.toggle("scale-150", active);
+              });
+            });
+          },
+          { threshold: 0.5 },
+        );
+        secs.forEach((s) => obs.observe(s));
+      })();
+    </script>
+  </body>
+</html>
